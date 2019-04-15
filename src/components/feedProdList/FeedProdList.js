@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Auxil from '../../hoc/Auxil/Auxil'
 import FeedProd from './feedProd/FeedProd'
 import classes from './FeedProdList.module.css'
+import Location from '../../Location/Real-time/User_location'
 
 //import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 //import axios from '../../axios-orders'
@@ -46,6 +47,7 @@ const FeedProdList = () => {
                     </div>
                 ))}
             </div>
+            <Location/>
         </Auxil>
     )
 }
