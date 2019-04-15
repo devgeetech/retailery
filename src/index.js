@@ -4,6 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
+import * as firebase from "firebase";
+
+var config = {
+    apiKey: "AIzaSyBW2vxkeF05W9mwjlv8PWX5roK1ouJQSm8",
+    authDomain: "shoppingspree-6e902.firebaseapp.com",
+    databaseURL: "https://shoppingspree-6e902.firebaseio.com",
+    storageBucket: "shoppingspree-6e902.appspot.com"
+  };
+firebase.initializeApp(config);
+
+  // Get a reference to the database service
+const database = firebase.database();
+
+const valu = database.ref('/Products/')
+console.log(valu)
 
 const app = (
     <BrowserRouter basename="/">
