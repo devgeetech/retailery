@@ -284,7 +284,6 @@ export class Geo extends Component {
           <InfoWindow
             onOpen={this.windowHasOpened}
             onClose={this.windowHasClosed}
-            Polyline={this.state.activePolyline}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
