@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { error } from "util";
 
-type Props = {};
-class Location extends Component<Props> {
+class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
