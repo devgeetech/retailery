@@ -9,7 +9,7 @@ import * as firebase from "firebase";
 import FeedProdList from './components/feedProdList/FeedProdList';
 
 var config = {
-    apiKey: "AIzaSyBW2vxkeF05W9mwjlv8PWX5roK1ouJQSm8",
+    apiKey: "AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak",
     authDomain: "shoppingspree-6e902.firebaseapp.com",
     databaseURL: "https://shoppingspree-6e902.firebaseio.com",
     storageBucket: "shoppingspree-6e902.appspot.com"
