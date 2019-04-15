@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { error } from "util";
 
-
 class Location extends Component {
   constructor(props) {
     super(props);
