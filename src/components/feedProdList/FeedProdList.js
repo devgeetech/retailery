@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Auxil from '../../hoc/Auxil/Auxil'
 import FeedProd from './feedProd/FeedProd'
+import classes from './FeedProdList.module.css'
 
 //import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 //import axios from '../../axios-orders'
@@ -32,7 +33,7 @@ const FeedProdList = () => {
     console.log(prodList)
     return(
         <Auxil>
-            <div>
+            <div className={classes.FeedProdList}>
                 {prodList.map(indProd => (
                     <div key={indProd.id}>
                     <FeedProd 
