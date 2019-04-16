@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
+
 .NavigationItems {
     /* top: 50%; */
     margin: 50% auto;
@@ -10,6 +13,7 @@
     /* text-decoration:aquamarine; */
     /* margin-top: 300px; */
     font-size: 35px;
+    font-family: 'Libre Baskerville', serif;
 }
 
 @media (min-width: 500px) {
