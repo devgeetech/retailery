@@ -1,0 +1,44 @@
+.feedProd {
+    width: 70%;
+    height: 100%;
+    border: 1.5px solid #eee;
+    box-shadow: 0 2px 3px rgb(88, 87, 87);
+    padding: 10px;
+    /* margin: 10px auto; */
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.img {
+    height: 90%;
+    width: 50%;
+    float: left;
+}
+
+@media(min-width: 500px) {
+    .img {
+        height: 80%;
+        width: 50%;
+        float: left;
+    }
+}
+
+.cont {
+    color: gray;
+    font-size: 90%;
+    @media (min-width: 500px) {
+        font: 60%;
+    }
+}
+
+.content {
+    color: #7c7c;
+    /* text-align: center; */
+    float: right;
+    font-size: 100%;
+    
+    @media (min-width: 500px){
+        float: right;
+        font-size: 100%;
+    }
+}
