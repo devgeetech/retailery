@@ -17,10 +17,8 @@ var config = {
 firebase.initializeApp(config);
 
   // Get a reference to the database service
-const database = firebase.database();
 
-const valu = database.ref('/Products/')
-console.log(valu)
+
 
 const app = (
   <BrowserRouter basename="/">
