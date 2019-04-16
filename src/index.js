@@ -2,16 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Geo from './components/Map/Geo'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
+import * as firebase from "firebase";
+import FeedProdList from './components/feedProdList/FeedProdList';
+
+var config = {
+    apiKey: "AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak",
+    authDomain: "shoppingspree-6e902.firebaseapp.com",
+    databaseURL: "https://shoppingspree-6e902.firebaseio.com",
+    storageBucket: "shoppingspree-6e902.appspot.com"
+  };
+firebase.initializeApp(config);
+
+  // Get a reference to the database service
+const database = firebase.database();
+
+const valu = database.ref('/Products/')
+console.log(valu)
 
 const app = (
-    <BrowserRouter basename="/">
-        <App />
-    </BrowserRouter>
-)
+  <BrowserRouter basename="/">
+    <App/>
+  </BrowserRouter>
+);
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(app, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
