@@ -9,7 +9,7 @@ const FeedProd = (props) => {
             <img src={props.imageSrc} alt={props.imgAlt} className={classes.img}/>
            
              {/* <svg height="10" width="450"> */}
-             <img src={image}  className={classes.svg1}/>
+            
                 {/*   */}
                 
             {/* </svg> */}
@@ -22,6 +22,7 @@ const FeedProd = (props) => {
 
            
             <div className={classes.content}>
+            <img src={image}  className={classes.svg1}/>
             <h2><strong>{props.name}</strong></h2>
             <p className={classes.cont}><i>{props.content}</i></p>
             <p><strong>{props.price}</strong></p>
