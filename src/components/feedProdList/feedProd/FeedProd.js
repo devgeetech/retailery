@@ -1,11 +1,26 @@
 import React from 'react'
 import classes from './FeedProd.module.scss'
+import image from './image.png'
 
 const FeedProd = (props) => {
     console.log(props.content)
     return(
         <div className={classes.feedProd}>
             <img src={props.imageSrc} alt={props.imgAlt} className={classes.img}/>
+           
+             {/* <svg height="10" width="450"> */}
+             <img src={image}  className={classes.svg1}/>
+                {/*   */}
+                
+            {/* </svg> */}
+          
+            {/* <div className={classes.svg2}>
+             <svg height="210" width="500">
+                <line x1="60" y1="-100" x2="300" y2="0" />
+            </svg>
+            </div> */}
+
+           
             <div className={classes.content}>
             <h2><strong>{props.name}</strong></h2>
             <p className={classes.cont}><i>{props.content}</i></p>
