@@ -3,6 +3,7 @@
     width: 100%;
     position: fixed;
     top: 0;
+    text-decoration-color: black;
     left: 0;
     background-color:transparent;
     display: flex;

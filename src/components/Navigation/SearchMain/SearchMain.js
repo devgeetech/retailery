@@ -7,7 +7,7 @@ import firebase from 'firebase'
 // import Spinner from '../UI/Spinner/Spinner'
 import Input from '../../UI/Input/Input'
 import { withRouter } from 'react-router'
-import classes from './SearchMain.module.scss';
+import classes from './Search.css';
 
 const SearchMain = (props) => {
     const inputEl = {
@@ -55,6 +55,7 @@ const SearchMain = (props) => {
     }
 
     return(
+        <div className={classes.search}>
         <form onSubmit={srchHandler} className={classes.searchBar}>
             <Input 
             key='search'
@@ -66,6 +67,7 @@ const SearchMain = (props) => {
             shouldValidate={false}
             changed={(event) => inputChangedHandler(event)}/>
         </form>
+        </div>
         
     )
 }
