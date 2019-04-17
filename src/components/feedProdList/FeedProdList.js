@@ -3,39 +3,28 @@ import React, { useState, useEffect } from 'react'
 import Auxil from '../../hoc/Auxil/Auxil'
 import FeedProd from './feedProd/FeedProd'
 import classes from './FeedProdList.module.css'
-import Location from '../../Location/Real-time/User_location'
-
-//import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
-//import axios from '../../axios-orders'
-
+import firebase from 'firebase'
+import Spinner from '../UI/Spinner/Spinner'
 
 const FeedProdList = () => {
+    let fetchedProd = []
+    const [prodList, prodUpdt] = useState(fetchedProd)
+    const [pComp,updComp]=useState((<Spinner/>))
 
-    const iniList = [
-        {
-            id: 1,
-            name:"iPhone XS", 
-            content:"Super Retina. In big and bigger.",
-            price:"$1500",
-            imageSrc:"http://d176tvmxv7v9ww.cloudfront.net/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-xs-space-select-2018_av2_1_1.jpg",
-            imgAlt:"iPhone XS image"
-        },
-        {
-            id: 2,
-            name:"Samsung S10+", 
-            content:"The phone that doesn’t just stand out, it stands apart",
-            price:"$1800",
-            imageSrc:"https://drop.ndtv.com/albums/GADGETS/samsung-galaxy-s10plus/galaxys10plusgallerycover_640x480.jpg",
-            imgAlt:"Samsung S10+ image"
-        }
-    ]
-
-    const [prodList, prodUpdt] = useState(iniList)
-    console.log(prodList)
-    return(
-        <Auxil>
-            <div className={classes.FeedProdList}>
-                {prodList.map(indProd => (
+    useEffect(()=>{
+        firebase.database().ref('Products/').once('value').then(
+            function(snapshot) {
+                const v=snapshot.val()
+                console.log(snapshot.val())
+    
+                for(let indProd in v){
+                    fetchedProd.push({
+                        ...v[indProd],
+                        id: indProd
+                    })
+                }
+                prodUpdt(fetchedProd)
+                updComp(prodList.map(indProd => (
                     <div key={indProd.id}>
                     <FeedProd 
                         name={indProd.name}
@@ -45,9 +34,16 @@ const FeedProdList = () => {
                         imgAlt={indProd.imgAlt}
                         />
                     </div>
-                ))}
+                )))
+            }
+        )     
+    },[])
+
+    return(
+        <Auxil>
+            <div className={classes.FeedProdList}>
+                {pComp}
             </div>
-            <Location/>
         </Auxil>
     )
 }
