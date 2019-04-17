@@ -15,7 +15,7 @@
     width: 90%;
     height: 3px;
     background-color: rgb(221, 221, 221);
-    
+    float: center;
 }
 
 @media (min-width: 500px) {

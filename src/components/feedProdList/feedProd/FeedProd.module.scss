@@ -13,35 +13,55 @@
     height: 100%;
     width: 80%;
     float: center;
-    box-shadow: 2px 2px #eee;
+    
 }
 
 @media(min-width: 500px) {
     .img {
-        height: 80%;
+        height: 60%;
         width: 50%;
         float: center;
-        box-shadow: 2px 2px #eee;
+       
     }
 }
 
 .cont {
     color: gray;
     font-size:85%;
-   
+
     @media (min-width: 500px) {
         font: 60%;
     }
 }
 
 .content {
-    color: #000080;
+    color: #008b8b;
     /* text-align: center; */
     float: center;
     font-size: 90%;
-    
+   
+    // background-image: linear-gradient(to top,#808080 2%,#fff8dc 10%, white 100%);
+
     @media (min-width: 500px){
-        float: right;
+        float: center;
         font-size: 100%;
+    
     }
+}
+
+.svg1 {
+//    stroke: #008080;
+//    stroke-width: 6;
+     height:100%;
+     width:60%;
+     top:70%;
+     float: center;
+    
+     @media (min-width: 500px) {
+         left:0;
+         height: 100%;
+         width: 50%;
+         top: 1200px;
+         float: center;
+     }
 }
