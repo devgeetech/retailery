@@ -5,7 +5,7 @@ import classes from './Toolbar.module.scss'
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import SearchMain from '../SearchMain/SearchMain'
-import icon from './icon.png'
+// import icon from './icon.png'
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
