@@ -1,29 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import Geo from './components/Map/Geo'
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import Geo from "./components/Map/Geo";
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter } from "react-router-dom";
 import * as firebase from "firebase";
-import FeedProdList from './components/feedProdList/FeedProdList';
+import FeedProdList from "./components/feedProdList/FeedProdList";
 
 var config = {
     apiKey: "AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak",
     authDomain: "shoppingspree-6e902.firebaseapp.com",
     databaseURL: "https://shoppingspree-6e902.firebaseio.com",
     storageBucket: "shoppingspree-6e902.appspot.com",
-    projectId: 'shoppingspree-6e902'
+    projectId: 'shoppingspree-6e902',
+    messagingSenderId: "30003369612"
   };
 firebase.initializeApp(config);
 
-  // Get a reference to the database service
-
-
+const messaging = firebase.messaging();
+messaging
+  .requestPermission()
+  .then(function() {
+    console.log("have permission");
+    return messaging.getToken();
+  })
+  .catch(function(err) {
+    console.log("error occured");
+  });
+messaging.onMessage(function (payload) {
+  console.log('onmessage',payload);
+});
+// Get a reference to the database service
 
 const app = (
   <BrowserRouter basename="/">
-    <App/>
+    <App />
   </BrowserRouter>
 );
 
