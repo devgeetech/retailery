@@ -2,6 +2,12 @@
     height: 100%;
     left: 250px;
     display: inline-block;
+    margin-right: 20px;
+    width: 50%;
+    @media (min-width:499px) {
+        width: 70%;
+        margin-right: 10px;
+    }
 }
     
   

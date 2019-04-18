@@ -21,10 +21,19 @@
 .Logo {
     height: 80%;
 }
+.Icon {
+    height: 50%;
+    width: 15%;
+    @media (min-width: 499px) {
+        height:50%;
+      width: 6%;
+      margin-right: 4%;
+    }
+}
 
 @media (max-width: 499px) {
     .DesktopOnly {
         display: none;
-        float: left;
+        float: right;
     }
 }

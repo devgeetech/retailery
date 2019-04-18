@@ -25,10 +25,12 @@
         display: flex;
         height: 100%;
         width: auto;
-        align-items: center;
+        align-items: left;
+        color: black;
     }
     .NavigationItem a {
-        color: white;
+        align-items : left;
+        color:black;
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
@@ -38,6 +40,6 @@
     .NavigationItem a.active {
         background-color: grey;
         border-bottom: 4px solid white;
-        color: white;
+        color:white;
     }
 }
