@@ -14,7 +14,6 @@ const toolbar = (props) => (
             <Logo />
         </div> */}
         <SearchMain/>
-        {/* <img src={icon} className={classes.Icon} /> */}
         <nav className={classes.DesktopOnly}>
             <NavigationItems/>
         </nav>
