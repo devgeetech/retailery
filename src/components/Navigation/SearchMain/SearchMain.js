@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router";
+import firebase from "firebase";
+
+import classes from './SearchMain.module.css';
 
 // import Auxil from '../../hoc/Auxil/Auxil'
 // import FeedProd from './feedProd/FeedProd'
 // import classes from './FeedProdList.module.css'
-import firebase from "firebase";
 // import Spinner from '../UI/Spinner/Spinner'
 import Input from "../../UI/Input/Input";
-import { withRouter } from "react-router";
-import classes from './SearchMain.module.css';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+
+
 
 const SearchMain = props => {
   const inputEl = {
@@ -55,7 +59,7 @@ const SearchMain = props => {
 
   return (
     <form onSubmit={srchHandler} className = {classes.searchbar}>
-      <Input
+      {/* <Input
         key="search"
         elementType="input"
         elementConfig={inpEl.elementConfig}
@@ -64,7 +68,17 @@ const SearchMain = props => {
         touched={inpEl.touched}
         shouldValidate={false}
         changed={event => inputChangedHandler(event)}
-      />
+      /> */}
+      <OutlinedInput
+        key="search"
+        type="input"
+        // elementConfig={inpEl.elementConfig}
+        value={inpEl.value}
+        // invalid={false}
+        // touched={inpEl.touched}
+        // shouldValidate={false}
+        onChange={event => inputChangedHandler(event)}
+      /> 
     </form>
   );
 };
