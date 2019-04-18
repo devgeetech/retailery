@@ -72,8 +72,10 @@ const SearchMain = props => {
       <OutlinedInput
         key="search"
         type="input"
+        labelWidth={0}
         // elementConfig={inpEl.elementConfig}
         value={inpEl.value}
+        placeholder="Search"
         // invalid={false}
         // touched={inpEl.touched}
         // shouldValidate={false}
@@ -84,3 +86,10 @@ const SearchMain = props => {
 };
 
 export default withRouter(SearchMain);
+
+
+
+
+
+
+  
