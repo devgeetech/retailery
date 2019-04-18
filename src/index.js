@@ -12,7 +12,8 @@ var config = {
     apiKey: "AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak",
     authDomain: "shoppingspree-6e902.firebaseapp.com",
     databaseURL: "https://shoppingspree-6e902.firebaseio.com",
-    storageBucket: "shoppingspree-6e902.appspot.com"
+    storageBucket: "shoppingspree-6e902.appspot.com",
+    projectId: 'shoppingspree-6e902'
   };
 firebase.initializeApp(config);
 

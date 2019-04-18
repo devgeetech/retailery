@@ -12,19 +12,22 @@ const FeedProdList = () => {
     const [pComp,updComp]=useState((<Spinner/>))
 
     useEffect(()=>{
-        firebase.database().ref('Products/').once('value').then(
-            function(snapshot) {
-                const v=snapshot.val()
-                console.log(snapshot.val())
-    
-                for(let indProd in v){
-                    fetchedProd.push({
-                        ...v[indProd],
-                        id: indProd
-                    })
-                }
-                prodUpdt(fetchedProd)
-                updComp(prodList.map(indProd => (
+
+        const db = firebase.firestore();
+        const srchRef = db.collection("products");
+
+        srchRef.onSnapshot(function(snapshot) {
+            fetchedProd = []
+            snapshot.forEach(function(childSnapshot) {
+                var childData = childSnapshot.data();
+                fetchedProd.push(childData)
+            });
+            prodUpdt(fetchedProd)
+            if(fetchedProd[0] == null){
+                updComp(<p>No Products</p>)
+            }
+            else{
+                updComp(fetchedProd.map(indProd => (
                     <div key={indProd.id}>
                     <FeedProd 
                         name={indProd.name}
@@ -36,7 +39,33 @@ const FeedProdList = () => {
                     </div>
                 )))
             }
-        )     
+            
+        })
+
+        // firebase.database().ref('Products/').once('value').then(
+        //     function(snapshot) {
+        //         const v=snapshot.val()
+    
+        //         for(let indProd in v){
+        //             fetchedProd.push({
+        //                 ...v[indProd],
+        //                 id: indProd
+        //             })
+        //         }
+        //         prodUpdt(fetchedProd)
+        //         updComp(prodList.map(indProd => (
+        //             <div key={indProd.id}>
+        //             <FeedProd 
+        //                 name={indProd.name}
+        //                 content={indProd.content}
+        //                 price={indProd.price}
+        //                 imageSrc={indProd.imageSrc}
+        //                 imgAlt={indProd.imgAlt}
+        //                 />
+        //             </div>
+        //         )))
+        //     }
+        // )     
     },[])
 
     return(

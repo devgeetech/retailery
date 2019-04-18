@@ -3,7 +3,6 @@ import classes from './FeedProd.module.scss'
 import image from './image.png'
 
 const FeedProd = (props) => {
-    console.log(props.content)
     return(
         <div className={classes.feedProd}>
             <img src={props.imageSrc} alt={props.imgAlt} className={classes.img}/>
