@@ -10,6 +10,7 @@ import classes from './SearchMain.module.css';
 // import Spinner from '../UI/Spinner/Spinner'
 import Input from "../../UI/Input/Input";
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+//import SearchBar from '@material-ui/core/searchBar';
 
 
 
@@ -58,7 +59,7 @@ const SearchMain = props => {
   };
 
   return (
-    <form onSubmit={srchHandler} className = {classes.searchbar}>
+    <form onSubmit={srchHandler} className={classes.form}>
       {/* <Input
         key="search"
         elementType="input"
@@ -70,17 +71,22 @@ const SearchMain = props => {
         changed={event => inputChangedHandler(event)}
       /> */}
       <OutlinedInput
-        key="search"
-        type="input"
-        labelWidth={0}
-        // elementConfig={inpEl.elementConfig}
-        value={inpEl.value}
-        placeholder="Search"
-        // invalid={false}
-        // touched={inpEl.touched}
-        // shouldValidate={false}
+          key="search"
+          type="input"
+          labelWidth={0}
+          value={inpEl.value}
+          placeholder="Search"
+          onChange={event => inputChangedHandler(event)}
+          className = {classes.searchbar}/> 
+      {/* <SearchBar
         onChange={event => inputChangedHandler(event)}
-      /> 
+        onRequestSearch={srchHandler}
+        style={{
+        marginTop: '10px',
+        maxWidth: 700,
+        borderRadius:'20px'
+        }} */}
+    
     </form>
   );
 };
