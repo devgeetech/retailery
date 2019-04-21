@@ -7,7 +7,7 @@ import "./App.css";
 import FeedProdList from "./components/feedProdList/FeedProdList.js";
 import FeedSpecProd from "./components/feedProdList/FeedSpecProd/FeedSpecProd";
 import Layout from "./hoc/Layout/Layout";
-import Geo from "./components/Map/last";
+import Geo from "./components/Map/Direction";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/Logout";
 import * as actions from "./store/actions/index";
