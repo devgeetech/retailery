@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import logo from "./logo.svg";
 import "./App.css";
 import FeedProdList from "./components/feedProdList/FeedProdList.js";
 import FeedSpecProd from "./components/feedProdList/FeedSpecProd/FeedSpecProd";
 import Layout from "./hoc/Layout/Layout";
-import Geo from "./components/Map/Geo"
-import Auth from './containers/Auth/Auth';
-import Logout from './containers/Auth/Logout/Logout';
-import * as actions from './store/actions/index';
+import Geo from "./components/Map/Direction";
+import Auth from "./containers/Auth/Auth";
+import Logout from "./containers/Auth/Logout/Logout";
+import * as actions from "./store/actions/index";
 
 class App extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.onTryAutoSignup();
   }
 
-  render () {
+  render() {
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
@@ -27,7 +27,7 @@ class App extends Component {
       </Switch>
     );
 
-    if ( this.props.isAuthenticated ) {
+    if (this.props.isAuthenticated) {
       routes = (
         <Switch>
           <Route path="/logout" component={Logout} />
@@ -39,9 +39,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Layout>
-          {routes}
-        </Layout>
+        <Layout>{routes}</Layout>
       </div>
     );
   }
@@ -55,15 +53,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignup: () => dispatch( actions.authCheckState() )
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
   };
 };
 
-export default withRouter( connect( mapStateToProps, mapDispatchToProps )( App ) );
-
-
-
-
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
 
 // class App extends Component {
 //   render() {
