@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
 .Button {
     background-color: transparent;
     border: none;
@@ -21,9 +23,42 @@
 }
 
 .Success {
-    color: #5C9210;
+    color: #3cb371;
+    /* background:  #dda0dd 100%); */
+    width: 22%;
+    font-size: 110%;
+    font-family: 'Libre Baskerville', serif;
+    border-radius: 10px;
+
 }
 
 .Danger {
-    color: #944317;
+    color: #f0f8ff;
+    background:linear-gradient(#00ced1,#00fa9a);
+    width: 34%;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 90%;
+    height: 50%;
+    border-radius: 8px;
+   
+    /* animation: wiggle 400ms 3s 8 ease-out; */
 }
+    .Danger:active {
+        animation:flip 5s ease-out forwards;
+}
+        /* animation-name: wiggle;
+        animation-duration: 6s;
+        /* animation-timing-function: ease-in-out; */
+        /* animation-delay: .5s; */ 
+  
+        @keyframes flip{
+            0% {
+                transform: rotateZ(0);
+            }
+            50% {
+                transform: rotateZ(180deg);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
