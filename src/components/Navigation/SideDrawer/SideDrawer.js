@@ -5,6 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems'
 import Aux from '../../../hoc/Auxil/Auxil'
 import Backdrop from '../../UI/Backdrop/Backdrop'
 
+  
 const sideDrawer = ( props ) => {
     let attachedClasses = [classes.SideDrawer, classes.Close]
     if(props.open){
@@ -31,4 +32,4 @@ const sideDrawer = ( props ) => {
 
 }
 
-export default sideDrawer
+export default sideDrawer;
