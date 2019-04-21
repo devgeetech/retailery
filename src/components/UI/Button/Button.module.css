@@ -43,6 +43,11 @@
    
     /* animation: wiggle 400ms 3s 8 ease-out; */
 }
+@media (min-width: 499px) {
+     .Danger {
+         width: 30%;
+     }
+}
     .Danger:active {
         animation:flip 5s ease-out forwards;
 }
