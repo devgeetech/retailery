@@ -1,4 +1,5 @@
 import axios from 'axios';
+import firebase from 'firebase'
 
 import * as actionTypes from './actionTypes';
 
@@ -40,9 +41,10 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const auth = (email, password, isSignup) => {
+export const auth = (email, password, isSignup, isCust, userData) => {
     return dispatch => {
         dispatch(authStart());
+        console.log(email)
         const authData = {
             email: email,
             password: password,
@@ -54,6 +56,16 @@ export const auth = (email, password, isSignup) => {
         }
         axios.post(url, authData)
             .then(response => {
+                // if(isSignup){
+                //     const db = firebase.firestore();
+                //     let setDoc = null
+                //     if(isCust)
+                //         setDoc = db.collection("customer");
+                //     else   
+                //         setDoc = db.collection("shop");
+                //     setDoc.doc(response.data.localId).set(userData)
+                // }
+                
                 console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
@@ -63,7 +75,7 @@ export const auth = (email, password, isSignup) => {
                 dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(err => {
-                dispatch(authFail(err.response.data.error));
+                dispatch(authFail(err));
             });
     };
 };
