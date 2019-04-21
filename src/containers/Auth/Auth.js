@@ -16,6 +16,7 @@ import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index';
 import { FormControl } from '@material-ui/core';
 
+
 class Auth extends Component {
     state = {
         controls: {
@@ -60,6 +61,20 @@ class Auth extends Component {
                     required: false,
                 },
                 valid: true,
+                touched: false
+            },
+            pinCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'PIN Code'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 6
+                },
+                valid: false,
                 touched: false
             },
             email: {
@@ -124,6 +139,20 @@ class Auth extends Component {
                 elementConfig: {
                     type: 'text',
                     placeholder: 'Longitude'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 6
+                },
+                valid: false,
+                touched: false
+            },
+            pinCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'PIN Code'
                 },
                 value: '',
                 validation: {
@@ -231,20 +260,18 @@ class Auth extends Component {
     submitHandler = ( event ) => {
         event.preventDefault();
         let usrData = {}
-        let userData = {}
+        //let userData = {}
         if(this.state.isSignup){
             if(this.state.isCust)
                 usrData=this.state.signupCustContr
             else
-                usrData=this.state.signupShopContr
-            for(let k in usrData){
-                userData.k = k.value
-            }
-            
+                usrData=this.state.signupShopContr 
         }
             
-        
-        this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup, this.state.isCust, userData );
+        console.log(usrData)
+        //console.log(userData)
+        //this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup, this.state.isCust, userData );
+        this.props.onAuth( usrData.email.value, usrData.password.value, this.state.isSignup, this.state.isCust, usrData );
     }
 
     switchAuthModeHandler = () => {

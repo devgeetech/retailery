@@ -50,21 +50,42 @@ export const auth = (email, password, isSignup, isCust, userData) => {
             password: password,
             returnSecureToken: true
         };
+        console.log(isSignup)
         let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
         if (!isSignup) {
             url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
         }
         axios.post(url, authData)
             .then(response => {
-                // if(isSignup){
-                //     const db = firebase.firestore();
-                //     let setDoc = null
-                //     if(isCust)
-                //         setDoc = db.collection("customer");
-                //     else   
-                //         setDoc = db.collection("shop");
-                //     setDoc.doc(response.data.localId).set(userData)
-                // }
+                let dataNew = {}
+                
+                if(isSignup){
+                    const db = firebase.firestore();
+                    let setDoc = null
+                    if(isCust){
+                        setDoc = db.collection("customer");
+                        dataNew = {
+                            name: userData.name.value,
+                            email: userData.email.value,
+                            pinCode: userData.pinCode.value,
+                            userId: response.data.localId
+                        }
+                    }  
+                    else{
+                        setDoc = db.collection("shop");
+                        dataNew = {
+                            name: userData.name.value,
+                            email: userData.email.value,
+                            pinCode: userData.pinCode.value,
+                            loc: {
+                                lat: userData.lat.value,
+                                lng: userData.lng.value
+                            },
+                            userId: response.data.localId
+                        }
+                    }     
+                    setDoc.doc(response.data.localId).set(dataNew)
+                }
                 
                 console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
