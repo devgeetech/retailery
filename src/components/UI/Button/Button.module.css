@@ -35,13 +35,18 @@
 .Danger {
     color: #f0f8ff;
     background:linear-gradient(#00ced1,#00fa9a);
-    width: 34%;
+    width: 54%;
     font-family: 'Libre Baskerville', serif;
     font-size: 90%;
     height: 50%;
     border-radius: 8px;
    
     /* animation: wiggle 400ms 3s 8 ease-out; */
+}
+@media (min-width: 499px) {
+     .Danger {
+         width: 30%;
+     }
 }
     .Danger:active {
         animation:flip 5s ease-out forwards;
