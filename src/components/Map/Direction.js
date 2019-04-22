@@ -23,7 +23,7 @@ class MyMapComponent extends React.Component {
         containerElement: <div style={{ width: `100%` }} />,
         mapElement: (
           <div
-            style={{ height: `660px`, width: `1365px`, position: "absolute" }}
+            style={{ height: `830px`, width: `1705px`, position: "absolute" }}
           />
         )
       }),
@@ -34,8 +34,8 @@ class MyMapComponent extends React.Component {
           const DirectionsService = new google.maps.DirectionsService();
           DirectionsService.route(
             {
-              origin: new google.maps.LatLng(41.85073, -87.65126),
-              destination: new google.maps.LatLng(41.85258, -87.65141),
+              origin: new google.maps.LatLng(9.954192, 76.3449),
+              destination: new google.maps.LatLng(9.888786, 76.419493),
               travelMode: google.maps.TravelMode.DRIVING
             },
             (result, status) => {
