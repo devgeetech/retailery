@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import logo from "./logo.svg";
 import "./App.css";
 import FeedProdList from "./components/feedProdList/FeedProdList.js";
+import WishList from './components/WishList/WishList'
 import FeedSpecProd from "./components/feedProdList/FeedSpecProd/FeedSpecProd";
 import Layout from "./hoc/Layout/Layout";
 import Geo from "./components/Map/Geo";
@@ -32,6 +33,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/logout" component={Logout} />
+          <Route path="/wish" exact component={WishList} />
           <Route path="/" exact component={FeedProdList} />
           <Route path="/geo" exact component={Geo} />
           <Route path="/direction" exact component={Direction} />

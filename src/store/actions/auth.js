@@ -68,7 +68,8 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                             name: userData.name.value,
                             email: userData.email.value,
                             pinCode: userData.pinCode.value,
-                            userId: response.data.localId
+                            userId: response.data.localId,
+                            wish:[]
                         }
                     }  
                     else{
@@ -81,7 +82,8 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                                 lat: userData.lat.value,
                                 lng: userData.lng.value
                             },
-                            userId: response.data.localId
+                            userId: response.data.localId,
+                            phone: userData.phoneNo.value
                         }
                     }     
                     setDoc.doc(response.data.localId).set(dataNew)
