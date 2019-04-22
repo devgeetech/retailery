@@ -162,6 +162,20 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             },
+            phoneNo: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Phone No.'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 10
+                },
+                valid: false,
+                touched: false
+            },
             email: {
                 elementType: 'input',
                 elementConfig: {
@@ -259,7 +273,7 @@ class Auth extends Component {
 
     submitHandler = ( event ) => {
         event.preventDefault();
-        let usrData = {}
+        let usrData = this.state.controls
         //let userData = {}
         if(this.state.isSignup){
             if(this.state.isCust)
