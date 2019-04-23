@@ -5,6 +5,10 @@ import firebase from 'firebase'
 import StarRatings from 'react-star-ratings';
 import Spinner from '../../UI/Spinner/Spinner'
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import phone from '../../../assets/icons/phone.svg'
+import heartIcon from '../../../assets/icons/heart.svg'
+import mapIcon from '../../../assets/icons/mapIcon.svg'
 //import console = require('console');
 
 const ProdSingleView = (props) => {
@@ -115,6 +119,7 @@ const ProdSingleView = (props) => {
                             <p><strong>{proData.price}</strong></p>
                         </div>
                         {rating}
+
                     </div>)
             const shopRef = db.collection("shop").doc(proData.sellerId).get()
                 .then(snapshot => {
@@ -130,8 +135,21 @@ const ProdSingleView = (props) => {
                     updCont(
                         <div>
                             <p>Seller : <strong>{sellerName}</strong></p>
-                            <a href={telPhone}><Button>Call</Button></a>
-                            <a href = {url} target="_blank" ><Button>Directions</Button></a>
+                            <div className={classes.navIcons}>
+                                <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                                    <img src={heartIcon} alt="phoneIcon" className={classes.phoneIcon}/>
+                                </Fab>
+                                <a href={telPhone}>
+                                    <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                                        <img src={phone} alt="phoneIcon" className={classes.phoneIcon}/>
+                                    </Fab>
+                                </a>
+                                <a href = {url} target="_blank" >
+                                    <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                                        <img src={mapIcon} alt="phoneIcon" className={classes.phoneIcon}/>
+                                    </Fab>
+                                </a>
+                            </div>
                         </div>
                     )
                 })

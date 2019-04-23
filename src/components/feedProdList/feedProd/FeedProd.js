@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './FeedProd.module.scss'
-import image from './image.png'
+import image from './star.png'
 
 const FeedProd = (props) => {
     return(
@@ -10,6 +10,8 @@ const FeedProd = (props) => {
                 <h2><strong>{props.name}</strong></h2>
                 <p className={classes.cont}><i>{props.content}</i></p>
                 <p><strong>{props.price}</strong></p>
+                <img src={image} className={classes.rating} />
+                
                 {/* <a href="tel:+919645171179">Call</a> */}
             </div>
         </div>
