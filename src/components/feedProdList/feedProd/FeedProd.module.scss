@@ -1,3 +1,4 @@
+// @import '../../WishList/WishL/WishL.module.scss';
 .feedProd {
     width: 70%;
     height: 100%;
@@ -14,14 +15,14 @@
     padding: 10px;
     height: 100%;
     width: 80%;
-    float: center;
+    // float: center;
 }
 
 @media(min-width: 500px) {
     .img {
         height: 60%;
         width: 50%;
-        float: center;
+        // float: center;
     }
 }
 
@@ -38,7 +39,7 @@
     width: 100%;
     color: white;
     /* text-align: center; */
-    float: center;
+    // float: center;
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -46,23 +47,26 @@
     background-color: #E3DBD8;
     // background-image: linear-gradient(to top,#808080 2%,#fff8dc 10%, white 100%);
     @media (min-width: 500px) {
-        float: center;
+        // float: center;
         font-size: 100%;
     }
 }
 
-.svg1 {
-    //    stroke: #008080;
-    //    stroke-width: 6;
-    height: 100%;
-    width: 60%;
-    top: 70%;
-    float: center;
-    @media (min-width: 500px) {
-        left: 0;
-        height: 100%;
-        width: 50%;
-        top: 1200px;
-        float: center;
-    }
-}
+// .svg1 {
+//     //    stroke: #008080;
+//     //    stroke-width: 6;
+//     height: 100%;
+//     width: 60%;
+//     top: 70%;
+//     float: center;
+//     @media (min-width: 500px) {
+//         left: 0;
+//         height: 100%;
+//         width: 50%;
+//         top: 1200px;
+//         float: center;
+//     }
+// }
+
+
+ 
