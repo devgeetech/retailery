@@ -33,7 +33,7 @@ const WishL = (props) => {
                         .then(snapshot => {
                             indProdu.push(snapshot.data())
                             updComp(indProdu.map(indProd => (
-                                <div key={indProd.id} className={classes.WishList}>
+                                // <div key={indProd.id} className={classes.WishList}>
                                
                                 <div className={classes.WfeedProd}>
                                  <img src={props.imageSrc} alt={props.imgAlt} className={classes.Wimg}/>
@@ -43,7 +43,7 @@ const WishL = (props) => {
                                  <p><strong>{props.price}</strong></p>
                                  </div>
                                  </div>
-                                 </div>
+                                
                             )))
                         })        
                 })
