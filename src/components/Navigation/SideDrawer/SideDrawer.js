@@ -24,6 +24,8 @@ const sideDrawer = ( props ) => {
                 </div> */}
                 <nav>
                     <NavigationItems clicked={props.closed} isAuthenticated={props.isAuth}/>
+                    {/* <img src='./home-button.png' />
+                <img src='../heart.png' /> */}
                 </nav>
             </div>
         </Aux>

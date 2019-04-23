@@ -9,6 +9,8 @@ const navigationItem = ( props ) => (
             to={props.link}
             exact={props.exact}
             activeClassName={classes.active}>{props.children}</NavLink>
+            {/* <img src='../home-button.png' />
+            <img src='../heart(1).png' /> */}
     </li>
 )
 
