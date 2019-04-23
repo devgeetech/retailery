@@ -12,6 +12,10 @@
     transition: transform 0.3s ease-out;
 }
 
+.headText {
+    color: white;
+}
+
 @media (min-width: 500px) {
     .SideDrawer {
         display: none;
