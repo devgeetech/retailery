@@ -34,7 +34,7 @@ class Location extends Component {
   // }
   render() {
     const perm = navigator.permissions.query({name: 'geolocation'})
-    //console.log(perm)
+    console.log(perm)
     
     //console.log(this.state.latitude)
     return (

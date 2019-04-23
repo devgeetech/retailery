@@ -1,0 +1,68 @@
+.ProdSingleView {
+    width: 70%;
+    height: 100%;
+    // border: 1.5px solid #eee;
+    // box-shadow: 0 2px 3px rgb(88, 87, 87);
+    padding: 0px;
+    margin: 10px auto;
+    background-color: white;
+    // box-sizing: border-box;
+    display: inline-block;
+}
+
+.img {
+    padding: 10px;
+    height: 100%;
+    width: 80%;
+    float: center;
+}
+
+@media(min-width: 500px) {
+    .img {
+        height: 60%;
+        width: 100%;
+        float: center;
+    }
+}
+
+.cont {
+    color: gray;
+    font-size: 85%;
+    @media (min-width: 500px) {
+        font: 60%;
+    }
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    color: white;
+    /* text-align: center; */
+    float: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 90%;
+    background-color: #E3DBD8;
+    // background-image: linear-gradient(to top,#808080 2%,#fff8dc 10%, white 100%);
+    @media (min-width: 500px) {
+        float: center;
+        font-size: 100%;
+    }
+}
+
+.svg1 {
+    //    stroke: #008080;
+    //    stroke-width: 6;
+    height: 100%;
+    width: 60%;
+    top: 70%;
+    float: center;
+    @media (min-width: 500px) {
+        left: 0;
+        height: 100%;
+        width: 50%;
+        top: 1200px;
+        float: center;
+    }
+}

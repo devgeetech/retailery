@@ -10,6 +10,7 @@ const FeedProd = (props) => {
                 <h2><strong>{props.name}</strong></h2>
                 <p className={classes.cont}><i>{props.content}</i></p>
                 <p><strong>{props.price}</strong></p>
+                {/* <a href="tel:+919645171179">Call</a> */}
             </div>
         </div>
     )

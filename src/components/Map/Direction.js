@@ -10,11 +10,23 @@ import {
 import { CurrentLocation } from "./Map";
 
 class MyMapComponent extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  state = {
+    latitude: 0,
+    longitude: 0
   }
 
   render() {
+
+    const query = new URLSearchParams(this.props.location.search)
+    let queryLis = []
+    for(let param of query.entries()){
+        queryLis.push(param)  
+    }
+    console.log(queryLis)
     const DirectionsComponent = compose(
       withProps({
         googleMapURL:
@@ -31,11 +43,17 @@ class MyMapComponent extends React.Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.setState({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            });
+          })
           const DirectionsService = new google.maps.DirectionsService();
           DirectionsService.route(
             {
-              origin: new google.maps.LatLng(41.85073, -87.65126),
-              destination: new google.maps.LatLng(41.85258, -87.65141),
+              origin: new google.maps.LatLng(this.state.latitude, this.state.longitude),
+              destination: new google.maps.LatLng(75.123, -87.546),
               travelMode: google.maps.TravelMode.DRIVING
             },
             (result, status) => {

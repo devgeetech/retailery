@@ -83,7 +83,12 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                                 lng: userData.lng.value
                             },
                             userId: response.data.localId,
-                            phone: userData.phoneNo.value
+                            phone: userData.phoneNo.value,
+                            custRatings:[],
+                            ratingVals:{
+                                noOfRating: 0,
+                                ratingValue: 0
+                            }
                         }
                     }     
                     setDoc.doc(response.data.localId).set(dataNew)
@@ -104,6 +109,7 @@ export const auth = (email, password, isSignup, isCust, userData) => {
 };
 
 export const setAuthRedirectPath = (path) => {
+    console.log("called")
     return {
         type: actionTypes.SET_AUTH_REDIRECT_PATH,
         path: path
