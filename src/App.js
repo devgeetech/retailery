@@ -13,9 +13,12 @@ import Layout from "./hoc/Layout/Layout";
 import Geo from "./components/Map/Geo";
 import Directions from "./components/Map/Direction";
 import Auth from "./containers/Auth/Auth";
+import AddProd from "./components/AddProd/AddProd"
 import Logout from "./containers/Auth/Logout/Logout";
 import * as actions from "./store/actions/index";
 import Push from 'push.js'
+
+
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
@@ -24,6 +27,8 @@ class App extends Component {
   }
   
   render() {
+    const isCust = localStorage.getItem('isCust'); 
+    console.log(isCust)
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
@@ -42,6 +47,7 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/wish" exact component={WishList} />
           <Route path="/FeedM" exact component={FeedSpecProd} />
+          <Route path="/AddProd" component={AddProd} />
           <Route path="/ProdView" exact component={ProdView} />
           <Route path="/MapView" exact component={Directions} />
           <Route path="/" exact component={FeedProdList} />
@@ -52,9 +58,10 @@ class App extends Component {
       );
     }
 
+
     return (
       <div className="App">
-        <Layout>{routes}</Layout>
+        <Layout isCust={isCust}>{routes}</Layout>
       </div>
     );
   }

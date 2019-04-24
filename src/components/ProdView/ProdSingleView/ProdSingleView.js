@@ -65,19 +65,26 @@ const ProdSingleView = (props) => {
 
     const addWishList = () => {
         let fullDat = null
-        const addWish = db.collection("customer")
-        const addWshRef = db.collection("customer").doc(props.userId).get()
+        let boot = 0;
+        if(props.userId!==null){
+            const addWish = db.collection("customer")
+            const addWshRef = db.collection("customer").doc(props.userId).get()
             .then(snapshot => {
                 fullDat = snapshot.data()
                 const oldWishList = fullDat.wish
-                if(props.prodId in oldWishList){
-                    console.log("already in")
-                }else{
-                    console.log("nope")
+                oldWishList.map(wishIt => {
+                    if (wishIt === props.prodId){
+                        boot = 1
+                    }
+                })
+                if(!boot){
+                    oldWishList.push(props.prodId)
+                    addWish.doc(props.userId).update({
+                        wish: oldWishList
+                    })
                 }
             })
-            
-        // setDoc.doc(response.data.localId).set(dataNew)
+        }
     }
 
     useEffect(()=>{

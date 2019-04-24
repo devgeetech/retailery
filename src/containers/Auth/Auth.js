@@ -332,24 +332,23 @@ class Auth extends Component {
                 changed={( event ) => this.inputChangedHandler( event, formElement.id, this.state.controls )} />
         ) );
 
-        let optio = null
+        let optio = (
+            <Auxil>
+                <FormControl>
+                    <RadioGroup
+                        aria-label="Type"
+                        name="account_type"
+                        className={classes.group}
+                        value={this.state.radVal}
+                        onChange={(event, value) => this.switchSignUpHandler(event, value)}>
+                            <FormControlLabel value="customer" control={<Radio />} label="Customer" />
+                            <FormControlLabel value="shop" control={<Radio />} label="Shop" />
+                    </RadioGroup>
+                </FormControl>
+            </Auxil>
+        )
 
         if(this.state.isSignup){
-            optio = (
-                <Auxil>
-                    <FormControl>
-                        <RadioGroup
-                            aria-label="Type"
-                            name="account_type"
-                            className={classes.group}
-                            value={this.state.radVal}
-                            onChange={(event, value) => this.switchSignUpHandler(event, value)}>
-                                <FormControlLabel value="customer" control={<Radio />} label="Customer" />
-                                <FormControlLabel value="shop" control={<Radio />} label="Shop" />
-                        </RadioGroup>
-                    </FormControl>
-                </Auxil>
-            )
             if(this.state.isCust){
                 usedContr = this.state.signupCustContr
             }else{

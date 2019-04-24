@@ -45,23 +45,44 @@ export const checkAuthTimeout = (expirationTime) => {
 export const auth = (email, password, isSignup, isCust, userData) => {
     return dispatch => {
         dispatch(authStart());
-        console.log(email)
+        // console.log(email)
         const authData = {
             email: email,
             password: password,
             returnSecureToken: true
         };
-        console.log(isSignup)
+        // console.log(isSignup)
         let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
         if (!isSignup) {
             url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
         }
         axios.post(url, authData)
             .then(response => {
+                const db = firebase.firestore();
+                if(!isSignup){
+                    let usId = response.data.localId
+                    if(isCust){
+                        db.collection("customer").doc(usId).get()
+                            .then(snapshot => {
+                                let veriDat = snapshot.data()
+                                console.log(veriDat)
+                                if(veriDat == null)
+                                    dispatch(logout())
+                            })
+                    }else{
+                        db.collection("shop").doc(usId).get()
+                            .then(snapshot => {
+                                let veriDat = snapshot.data()
+                                console.log(veriDat)
+                                if(veriDat == null)
+                                    dispatch(logout())
+                        })
+                    }
+                }
                 let dataNew = {}
                 
                 if(isSignup){
-                    const db = firebase.firestore();
+                    
                     let setDoc = null
                     if(isCust){
                         setDoc = db.collection("customer");
@@ -70,7 +91,8 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                             email: userData.email.value,
                             pinCode: userData.pinCode.value,
                             userId: response.data.localId,
-                            wish:[]
+                            wish:[],
+                            isCust: 1
                         }
                     }  
                     else{
@@ -89,21 +111,22 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                             ratingVals:{
                                 noOfRating: 0,
                                 ratingValue: 0
-                            }
+                            },
+                            isCust: 0
                         }
                     }     
                     setDoc.doc(response.data.localId).set(dataNew)
                     Push.create("Welcome to ShoppingSpree");
                 }
                 
-                console.log(response);
+                // console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', response.data.localId);
+                localStorage.setItem('isCust', isCust);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
                 dispatch(checkAuthTimeout(response.data.expiresIn));
-                
             })
             .catch(err => {
                 dispatch(authFail(err));
