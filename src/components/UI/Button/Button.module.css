@@ -8,13 +8,14 @@
     cursor: pointer;
     font: inherit;
     /* padding: 10; ? */
-    margin: 10px;
+    /* margin: 10px; */
     font-weight: bold;
 }
 
 .Button:first-of-type {
-    margin-left: 0;
+    /* margin-left: 0; */
     padding-left: 0;
+    margin-top: 20px;
 }
 
 .Button:disabled {
@@ -29,7 +30,9 @@
     font-size: 110%;
     font-family: 'Libre Baskerville', serif;
     border-radius: 10px;
-
+    margin: 10px auto;
+    /* justify-content: center; */
+    
 }
 
 .Danger {
@@ -38,8 +41,12 @@
     width: 54%;
     font-family: 'Libre Baskerville', serif;
     font-size: 90%;
-    height: 50%;
+    height: 100%;
     border-radius: 8px;
+    margin-left: 30px;
+    margin-right: 0;
+    /* justify-content: center; */
+    
    
     /* animation: wiggle 400ms 3s 8 ease-out; */
 }
@@ -58,12 +65,12 @@
   
         @keyframes flip{
             0% {
-                transform: rotateZ(0);
+                transform: rotateY(0);
             }
             50% {
-                transform: rotateZ(180deg);
+                transform: rotateY(180deg);
             }
             100% {
-                transform: rotateZ(360deg);
+                transform: rotateY(360deg);
             }
         }
