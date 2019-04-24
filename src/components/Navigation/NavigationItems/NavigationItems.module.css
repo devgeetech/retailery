@@ -3,7 +3,7 @@
 
 .NavigationItems {
     /* top: 50%; */
-    margin: 50% auto;
+    margin: 50% 0;
     padding: 0;
     list-style: none;
     display: flex;
@@ -12,7 +12,7 @@
     height: 100%;
     /* text-decoration:aquamarine; */
     /* margin-top: 300px; */
-    font-size: 35px;
+    font-size: 110%;
     font-family: 'Libre Baskerville', serif;
 }
 
@@ -28,4 +28,24 @@
         color: black;
     
     }
+}
+
+.Home {
+    height: 20px;
+    widTh: 20px;
+    margin: 0;
+    margin-right: 5px;
+}
+@media (min-width: 499px) {
+    .Home {
+        height:5px;
+        width:5px;
+    }
+}
+
+.WiSh {
+    height: 20px;
+    widTh: 20px;
+    margin: 0;
+    margin-right: 5px;
 }

@@ -10,6 +10,7 @@
     "google-maps-react": "^2.0.2",
     "material-ui": "^0.20.2",
     "node-sass": "^4.11.0",
+    "push.js": "^1.0.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
@@ -21,9 +22,11 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-star-ratings": "^2.3.0",
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "simple-web-notification": "^1.0.32"
   },
   "scripts": {
     "start": "react-scripts start",

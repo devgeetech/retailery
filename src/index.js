@@ -24,20 +24,20 @@ var config = {
 };
 firebase.initializeApp(config);
 
-const messaging = firebase.messaging();
-messaging
-  .requestPermission()
-  .then(function() {
-    console.log("have permission");
-    return messaging.getToken();
-  })
-  .catch(function(err) {
-    console.log("error occured");
-  });
-messaging.onMessage(function(payload) {
-  console.log("onmessage", payload);
-});
-// Get a reference to the database service
+// const messaging = firebase.messaging();
+// messaging
+//   .requestPermission()
+//   .then(function() {
+//     console.log("have permission");
+//     return messaging.getToken();
+//   })
+//   .catch(function(err) {
+//     console.log("error occured");
+//   });
+// messaging.onMessage(function(payload) {
+//   console.log("onmessage", payload);
+// });
+// // Get a reference to the database service
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

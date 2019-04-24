@@ -6,6 +6,8 @@ import classes from '../FeedProdList.module.css'
 //import firebase from './node_modules/firebase'
 import Spinner from '../../UI/Spinner/Spinner'
 import firebase from 'firebase'
+//import console = require('console');
+
 
 const FeedSpecProd = (props) => {
 
@@ -18,33 +20,41 @@ const FeedSpecProd = (props) => {
     
     const compList = []
 
-    
+    const showSpecProd = (proDet) =>{
+        console.log("clicked")
+        console.log(proDet)
+        const queryPar = encodeURIComponent(proDet);
+
+        props.history.push({
+        pathname: "/ProdView",
+        search: "?" + queryPar
+        });
+    }
 
     useEffect(()=>{
 
         const db = firebase.firestore();
         const srchRef = db.collection("products");
-
         const srchRes = srchRef.where("tags", "array-contains", queryLis[0][0])
-        
         srchRes.onSnapshot(function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var childData = childSnapshot.data();
                     compList.push(childData)
+                    console.log(compList)
                 });
                 if(compList[0] == null){
                     updComp(<p>No results</p>)
                 }
                 else{
                     updComp(compList.map(indProd => (
-                        <div key={indProd.id}>
-                        <FeedProd 
-                            name={indProd.name}
-                            content={indProd.content}
-                            price={indProd.price}
-                            imageSrc={indProd.imageSrc}
-                            imgAlt={indProd.imgAlt}
-                            />
+                        <div key={indProd.id} onClick={event => showSpecProd(indProd.id)}>
+                            <FeedProd 
+                                name={indProd.name}
+                                content={indProd.content}
+                                price={indProd.price}
+                                imageSrc={indProd.imageSrc}
+                                imgAlt={indProd.imgAlt}
+                                />
                         </div>
                     )))
                 }

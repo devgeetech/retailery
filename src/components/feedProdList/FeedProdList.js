@@ -5,11 +5,23 @@ import FeedProd from './feedProd/FeedProd'
 import classes from './FeedProdList.module.css'
 import firebase from 'firebase'
 import Spinner from '../UI/Spinner/Spinner'
+import { withRouter } from "react-router";
 
-const FeedProdList = () => {
+const FeedProdList = (props) => {
     let fetchedProd = []
     const [prodList, prodUpdt] = useState(fetchedProd)
     const [pComp,updComp]=useState((<Spinner/>))
+
+    const showSpecProd = (proDet) =>{
+        console.log("clicked")
+        console.log(proDet)
+        const queryPar = encodeURIComponent(proDet);
+
+        props.history.push({
+        pathname: "/ProdView",
+        search: "?" + queryPar
+        });
+    }
 
     useEffect(()=>{
 
@@ -28,7 +40,7 @@ const FeedProdList = () => {
             }
             else{
                 updComp(fetchedProd.map(indProd => (
-                    <div key={indProd.id}>
+                    <div key={indProd.id} onClick={event => showSpecProd(indProd.id)}>
                     <FeedProd 
                         name={indProd.name}
                         content={indProd.content}
@@ -77,4 +89,4 @@ const FeedProdList = () => {
     )
 }
 
-export default FeedProdList;
+export default withRouter(FeedProdList);
