@@ -24,6 +24,8 @@
 
 .navIcons {
     padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media(min-width: 500px) {

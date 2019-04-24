@@ -10,27 +10,26 @@ import firebase from 'firebase'
 
 const WishL = (props) => {
     const [pComp,updComp]=useState((<Spinner/>))
-    const [compList,upWComp]=useState([])
-        let cmpList = []
+    const [cmpList,upWComp]=useState([])
+        let compList = []
         const indProdu = []
         const db = firebase.firestore();
 
         useEffect(()=>{
             const srchRef = db.collection("customer").doc(props.userId)
             srchRef.onSnapshot(snapshot => {
-                cmpList = snapshot.data().wish
-                upWComp(cmpList)
-            }) 
-        },[])
+                compList = snapshot.data().wish
+                upWComp(compList)
 
-        useEffect(()=>{
-            if(compList[0] == null){
-                updComp(<p>No results</p>)
-            }
-            else{
-                compList.forEach(prodId => {
-                    db.collection("products").doc(prodId).get()
+                if(compList[0] == null){
+                    updComp(<p>No results</p>)
+                }
+                else{
+                    compList.forEach(prodId => {
+
+                     db.collection("products").doc(prodId).get()
                         .then(snapshot => {
+                            
                             indProdu.push(snapshot.data())
                             updComp(indProdu.map(indProd => (
                                 <div key={indProd.id} className={classes.FeedProd}>
@@ -43,12 +42,12 @@ const WishL = (props) => {
                                         styleClass={classes}/>
                                 </div>
                             )))
-                        })        
-                })
-                
-            }
-        },[pComp])
-
+                        })          
+                    })
+                }
+            })
+        },[])
+        
         return(
             <Auxil>
                 <div>

@@ -24,7 +24,10 @@ const sideDrawer = ( props ) => {
                 </div> */}
                 <nav>
                     <h1 className={classes.headText}>ShoppingSpree</h1>
-                    <NavigationItems clicked={props.closed} isAuthenticated={props.isAuth}/>
+                    <NavigationItems 
+                        clicked={props.closed} 
+                        isAuthenticated={props.isAuth} 
+                        isCust={props.isCust}/>
                    
                 </nav>
             </div>
