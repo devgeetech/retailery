@@ -137,22 +137,31 @@ const ProdSingleView = (props) => {
                     console.log(usrLat)
                     const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak&origin="+srchParam.origin+"&destination="+srchParam.destination
                     updCont(
-                        <div>
+                        <div className={classes.page}>
                             <p>Seller : <strong>{sellerName}</strong></p>
                             <div className={classes.navIcons}>
+                            <div className={classes.wish}>
                                 <Fab variant="extended" aria-label="Delete" className={classes.fab} >
                                     <img src={heartIcon} alt="phoneIcon" className={classes.phoneIcon} onClick={addWishList}/>
                                 </Fab>
+                                </div>
+                                <div className={classes.wish}>
                                 <a href={telPhone}>
-                                    <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                                <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                                         <img src={phone} alt="phoneIcon" className={classes.phoneIcon}/>
-                                    </Fab>
+                                    </Fab>     
                                 </a>
+                                </div>
+                                
+                                <div className={classes.wish}>
                                 <a href = {url} target="_blank" >
+                              
                                     <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                                         <img src={mapIcon} alt="phoneIcon" className={classes.phoneIcon}/>
                                     </Fab>
+                                    
                                 </a>
+                               </div>
                             </div>
                         </div>
                     )
