@@ -12,7 +12,6 @@ class ProdView extends Component {
         for(let param of query.entries()){
             queryLis.push(param)  
         }
-
         return(
             <div className={classes.ProdView}>
                 <ProdSingleView prodId={queryLis[0][0]} userId={this.props.userId}/>

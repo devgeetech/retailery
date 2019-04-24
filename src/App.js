@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
     //this is to push notification
-    Push.create("welcome to shoppingspree");
+    // Push.create("welcome to shoppingspree");
   }
   
   render() {

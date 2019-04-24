@@ -12,11 +12,12 @@ import mapIcon from '../../../assets/icons/mapIcon.svg'
 //import console = require('console');
 
 const ProdSingleView = (props) => {
-
+    const [usrId, updId] = useState(props.userId)
     const [proDat, upDat] = useState(null)
     const [ratVal, upRatVal] = useState(0)
     let usrLat = 9.318226
     let usrLng = 76.613996
+    let oldWishList = null
     const [prodComp, updProd] = useState(<Spinner />)
     const [contInfo, updCont] = useState(<Spinner />)
 
@@ -62,18 +63,21 @@ const ProdSingleView = (props) => {
         //}
     }
 
-    const mapInit = (loc) =>{
-        const srchParam = {
-            key: "key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE",
-            origin: usrLat+","+usrLng,
-            destination: loc.lat+","+loc.lng
-        }
-        const pathname = "/https://www.google.com/maps/embed/v1/directions?key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE&origin="+srchParam.origin+"&destination="+srchParam.destination
-        // const queryPar = encodeURIComponent(srchParam);
-        // props.history.replace({
-        //     pathname: "/https://www.google.com/maps/embed/v1/directions?key=YOUR_API_KEY&origin=Oslo+Norway&destination=Telemark+Norway",
-        //     search: "?" + queryPar
-        // });
+    const addWishList = () => {
+        let fullDat = null
+        const addWish = db.collection("customer")
+        const addWshRef = db.collection("customer").doc(props.userId).get()
+            .then(snapshot => {
+                fullDat = snapshot.data()
+                const oldWishList = fullDat.wish
+                if(props.prodId in oldWishList){
+                    console.log("already in")
+                }else{
+                    console.log("nope")
+                }
+            })
+            
+        // setDoc.doc(response.data.localId).set(dataNew)
     }
 
     useEffect(()=>{
@@ -136,8 +140,8 @@ const ProdSingleView = (props) => {
                         <div>
                             <p>Seller : <strong>{sellerName}</strong></p>
                             <div className={classes.navIcons}>
-                                <Fab variant="extended" aria-label="Delete" className={classes.fab}>
-                                    <img src={heartIcon} alt="phoneIcon" className={classes.phoneIcon}/>
+                                <Fab variant="extended" aria-label="Delete" className={classes.fab} >
+                                    <img src={heartIcon} alt="phoneIcon" className={classes.phoneIcon} onClick={addWishList}/>
                                 </Fab>
                                 <a href={telPhone}>
                                     <Fab variant="extended" aria-label="Delete" className={classes.fab}>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebase from 'firebase'
+import Push from 'push.js'
 
 import * as actionTypes from './actionTypes';
 
@@ -92,6 +93,7 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                         }
                     }     
                     setDoc.doc(response.data.localId).set(dataNew)
+                    Push.create("Welcome to ShoppingSpree");
                 }
                 
                 console.log(response);
@@ -101,6 +103,7 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                 localStorage.setItem('userId', response.data.localId);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
                 dispatch(checkAuthTimeout(response.data.expiresIn));
+                
             })
             .catch(err => {
                 dispatch(authFail(err));
