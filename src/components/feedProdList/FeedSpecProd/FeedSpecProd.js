@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 import Auxil from '../../../hoc/Auxil/Auxil'
 import FeedProd from '../feedProd/FeedProd'
-import classes from '../FeedProdList.module.css'
+import classes from './FeedSpecProd.module.css'
 //import firebase from './node_modules/firebase'
 import Spinner from '../../UI/Spinner/Spinner'
+import Geo from '../../Map/Geo'
+import GeoF from '../../Map/GeoF'
 import firebase from 'firebase'
 //import console = require('console');
 
@@ -12,6 +14,14 @@ import firebase from 'firebase'
 const FeedSpecProd = (props) => {
 
     const [pComp,updComp]=useState((<Spinner/>))
+    const [mapComp, upMap]=useState(<Spinner/>)
+    const [locatArray, upLocat] = useState([{pos:{lat : 9.318226, lng : 76.613996},name:"Default"}])
+    let mapCompo = <Spinner/>
+    //let usrLoc = null
+    const selArray = []
+    const locArray = []
+
+
     const query = new URLSearchParams(props.location.search)
     let queryLis = []
     for(let param of query.entries()){
@@ -32,7 +42,10 @@ const FeedSpecProd = (props) => {
     }
 
     useEffect(()=>{
-
+        // navigator.geolocation.getCurrentPosition(position => {
+        //     console.log(position)
+        //     usrLoc={lat:position.coords.latitude, lng:position.coords.longitude}
+        // })
         const db = firebase.firestore();
         const srchRef = db.collection("products");
         const srchRes = srchRef.where("tags", "array-contains", queryLis[0][0])
@@ -40,8 +53,37 @@ const FeedSpecProd = (props) => {
                 snapshot.forEach(function(childSnapshot) {
                     var childData = childSnapshot.data();
                     compList.push(childData)
-                    console.log(compList)
+                    // console.log(compList)
                 });
+
+                compList.map(selScrap => {
+                    selArray.push(selScrap.sellerId)
+                })
+
+                selArray.map(locScrap => {
+                    const locRef = db.collection("shop");
+                    const locRes = locRef.where('userId','==',locScrap)
+                    locRes.onSnapshot(sapshot => {
+                            sapshot.forEach(function(chldSapshot) {
+                                var chldData = chldSapshot.data();
+                                locArray.push({pos: chldData.loc, name: chldData.name})
+                                // console.log(locArray)
+                            });
+                            console.log(selArray)
+                            console.log(locArray)
+                            //upLocat(locArray)
+                            upMap(<GeoF locArray={locArray}/>)
+                        })
+                    // locRes.onSnapshot(function(sapshot){
+                    //     sapshot.forEach(function(chldSapshot) {
+                    //         var chldData = chldSapshot.data();
+                    //         locArray.push({pos: chldData.loc, name: chldData.name})
+                    //     });
+                    // })
+                })
+                
+                // mapCompo=(<Geo locArray={locArray}/>)
+                
                 if(compList[0] == null){
                     updComp(<p>No results</p>)
                 }
@@ -84,10 +126,19 @@ const FeedSpecProd = (props) => {
         // })  
     },[updComp, props.location.search])
     
+    // useEffect(()=>{
+    //     console.log("update")
+    //     upMap(<Geo locArray={locArray}/>)
+    // },[locatArray])
      
     return(
         <Auxil>
-            <div className={classes.FeedProdList}>
+            
+                {/* <Geo locArray={locArray}/> */}
+            <div className={classes.mapDiv}>
+                {mapComp}
+            </div>
+            <div className={classes.FeedSpecProdList}>
                 {pComp}
             </div>
         </Auxil>
