@@ -7,18 +7,17 @@ const FeedProd = (props) => {
         <div className={classes.feedProd}>
             <img src={props.imageSrc} alt={props.imgAlt} className={classes.img}/>
             <div className={classes.content}>
-            <div className={classes.edit}>
-                <h2><strong>{props.name}</strong></h2>
-                <div className={classes.price}>
-                <p><strong>{props.price}</strong></p></div>
+                <div className={classes.edit}>
+                    <h2><strong>{props.name}</strong></h2>
+                    <div className={classes.price}>
+                        <p><strong>{props.price}</strong></p>
+                    </div>
                 </div>
                 <div className={classes.cont}>
-                <img src={image} className={classes.rating} />
+                    <p>{props.ratVal}</p>
+                    <img src={image} className={classes.rating} />
                 </div>
                 <p className={classes.contents}><i>{props.content}</i></p>
-               
-               
-                
                 {/* <a href="tel:+919645171179">Call</a> */}
             </div>
         </div>

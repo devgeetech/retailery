@@ -9,19 +9,22 @@ import plusIcon from '../../../assets/icons/plus.svg'
 
 const navigationItems = (props) =>{
     //const isCust = localStorage.getItem('isCust'); 
-    console.log(props.isCust)
-    let isShop = null
-    if(props.isCust===true)
-        isShop=false
-    else
-        isShop=true
+    
+    let isShop = !props.isCust
+    // if(props.isCust===true)
 
+    //     isShop=false
+    // else
+    //     isShop=true
+
+    console.log(props.isCust)
+    console.log(isShop)
     return(
         <ul className={classes.NavigationItems}>
             <NavigationItem link="/" exact clicked={props.clicked}>
                     <img src={home} className={classes.Home} alt= "alt" />Home
             </NavigationItem>
-            {props.isAuthenticated && (props.isCust===true) ? <NavigationItem link="/wish" clicked={props.clicked}>
+            {props.isAuthenticated && (props.isCust) ? <NavigationItem link="/wish" clicked={props.clicked}>
                 <img src={wish} className={classes.WiSh} alt="alt" />Wishlist
             </NavigationItem> : null}
             {props.isAuthenticated && isShop ? <NavigationItem link="/AddProd" clicked={props.clicked}>
