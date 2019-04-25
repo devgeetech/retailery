@@ -28,7 +28,7 @@ class App extends Component {
   
   render() {
     const isCust = localStorage.getItem('isCust'); 
-    console.log(isCust)
+    console.log("isCust: " + isCust)
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
