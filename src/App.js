@@ -14,6 +14,7 @@ import Geo from "./components/Map/Geo";
 import Directions from "./components/Map/Direction";
 import Auth from "./containers/Auth/Auth";
 import AddProd from "./components/AddProd/AddProd"
+import ManProd from './components/ManProd/ManProd'
 import Logout from "./containers/Auth/Logout/Logout";
 import * as actions from "./store/actions/index";
 import Push from 'push.js'
@@ -28,7 +29,7 @@ class App extends Component {
   
   render() {
     const isCust = localStorage.getItem('isCust'); 
-    console.log("isCust: " + isCust)
+    //console.log("isCust: " + isCust)
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
@@ -52,6 +53,7 @@ class App extends Component {
           <Route path="/MapView" exact component={Directions} />
           <Route path="/" exact component={FeedProdList} />
           <Route path="/geo" exact component={Geo} />
+          <Route path="/ManProd" exact component={ManProd} />
           <Route path="/direction" exact component={Directions} />
           <Redirect to="/" />
         </Switch>

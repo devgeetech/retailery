@@ -69,8 +69,8 @@ const FeedSpecProd = (props) => {
                                 locArray.push({pos: chldData.loc, name: chldData.name})
                                 // console.log(locArray)
                             });
-                            console.log(selArray)
-                            console.log(locArray)
+                            //console.log(selArray)
+                            //console.log(locArray)
                             //upLocat(locArray)
                             upMap(<GeoF locArray={locArray}/>)
                         })
@@ -86,6 +86,7 @@ const FeedSpecProd = (props) => {
                 
                 if(compList[0] == null){
                     updComp(<p>No results</p>)
+                    upMap(null)
                 }
                 else{
                     updComp(compList.map(indProd => (
@@ -137,13 +138,13 @@ const FeedSpecProd = (props) => {
             <div className={classes.page}>
             
                 {/* <Geo locArray={locArray}/> */}
-            <div className={classes.mapDiv}>
-                {mapComp}
-            </div>
+                <div className={classes.mapDiv}>
+                    {mapComp}
+                </div>
 
-            <div className={classes.FeedSpecProdList}>
-                {pComp}
-            </div>
+                <div className={classes.FeedSpecProdList}>
+                    {pComp}
+                </div>
             </div>
         </Auxil>
     )

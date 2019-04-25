@@ -18,6 +18,7 @@ const ProdSingleView = (props) => {
     let usrLat = 9.318226
     let usrLng = 76.613996
     let oldWishList = null
+    let viewCount = 0
     const [prodComp, updProd] = useState(<Spinner />)
     const [contInfo, updCont] = useState(<Spinner />)
 
@@ -99,6 +100,8 @@ const ProdSingleView = (props) => {
         const srchRef = db.collection("products").doc(props.prodId).get()
         .then(snapshot => {
             const proData = snapshot.data()
+            viewCount = proData.views + 1
+            db.collection("products").doc(props.prodId).update({views:viewCount});
             upDat(proData)
             if(props.userId){
                 rat = ratSrch.where("id","==",props.prodId).where("custRatings", "array-contains", props.userId) 
@@ -174,6 +177,7 @@ const ProdSingleView = (props) => {
                     )
                 })
         })
+        
     },[])
 
 

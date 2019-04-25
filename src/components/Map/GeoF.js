@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import Directionbutton from "../../components/UI/Button/Button";
 import Auxil from "../../hoc/Auxil/Auxil";
+import homeIcon from '../../assets/icons/homeLoc3.png'
 import Layout from "../../hoc/Layout/Layout";
 import CurrentLocation from "./Map";
 import classes from "./Geo.module.css";
@@ -15,6 +16,7 @@ const GeoF = (props) => {
   const [selectedPlace, upSelectP] = useState({})
   const [usrLoc, upUsrLoc] = useState({usrLat : 9.318226,usrLng : 76.613996})
   const [mapComp, upMap] = useState(null)
+  let usL = {usrLat : 9.318226,usrLng : 76.613996}
 //   const [mrkrs, upMrkrs] = useState(null)
 
 //   componentDidUpdate(prevProps) {
@@ -62,27 +64,35 @@ const GeoF = (props) => {
         }
     };
 
+  // useEffect(()=>{
+    
+  // },[])  
+
   useEffect(()=>{
+      // navigator.geolocation.getCurrentPosition(position => {
+      //   //console.log(position)
+      //   upUsrLoc({usrLat: position.coords.latitude, usrLng: position.coords.longitude})
+      // })
       navigator.geolocation.getCurrentPosition(position => {
-        console.log(position)
-        upUsrLoc({usrLat: position.coords.latitude, usrLng: position.coords.longitude})
-      })
-      const locArray = props.locArray
-      // const locArray =  newProps.locArray
-      console.log(locArray)
+        usL = {usrLat: position.coords.latitude, usrLng: position.coords.longitude}
+        const locArray = props.locArray
       const mrkrs = (locArray.map(locat => (
         <Marker onClick={onMarkerClick} name={locat.name}  position={locat.pos}/>
       )))
-    //   upMrkrs({mrkrs: mrkrs})
       const mapCompo = (<Map google={props.google}
          style={{width: '80%', height: '60%', position: 'relative', margin:'10px auto'}}
-        // style={classes.Geo}
         className={'map'}
         zoom={14}
         initialCenter={{
-          lat: usrLoc.usrLat,
-          lng: usrLoc.usrLng
+          lat: usL.usrLat,
+          lng: usL.usrLng
         }}>
+        <Marker 
+          onClick={onMarkerClick} name={"You are here"}  
+          position={{lat:usL.usrLat, lng:usL.usrLng}}
+          icon={{
+            url: homeIcon
+          }} />
         {mrkrs}
         <InfoWindow
             marker={activeMarker}
@@ -94,6 +104,8 @@ const GeoF = (props) => {
         </InfoWindow>
       </Map>)
       upMap(mapCompo)
+      })
+      
   },[props, activeMarker])
   
 

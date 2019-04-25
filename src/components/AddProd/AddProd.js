@@ -145,7 +145,8 @@ class AddProd extends Component {
                 noOfRating: 0,
                 ratingValue: 0
             },
-            custRatings: []
+            custRatings: [],
+            views: 0
         }
 
         db.collection("products").add(dataNew)
