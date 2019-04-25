@@ -133,13 +133,16 @@ const FeedSpecProd = (props) => {
      
     return(
         <Auxil>
+            <div className={classes.page}>
             
                 {/* <Geo locArray={locArray}/> */}
             <div className={classes.mapDiv}>
                 {mapComp}
             </div>
+
             <div className={classes.FeedSpecProdList}>
                 {pComp}
+            </div>
             </div>
         </Auxil>
     )
