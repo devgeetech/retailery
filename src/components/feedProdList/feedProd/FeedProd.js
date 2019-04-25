@@ -14,8 +14,9 @@ const FeedProd = (props) => {
                 </div>
                 <div className={classes.cont}>
                 <img src={image} className={classes.rating} />
-                <p><i>{props.content}</i></p>
-               </div>
+                </div>
+                <p className={classes.contents}><i>{props.content}</i></p>
+               
                
                 
                 {/* <a href="tel:+919645171179">Call</a> */}
