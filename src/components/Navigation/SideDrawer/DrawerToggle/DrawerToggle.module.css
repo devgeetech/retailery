@@ -14,7 +14,7 @@
 .DrawerToggle div {
     width: 90%;
     height: 3px;
-    background-color: rgb(221, 221, 221);
+    background-color: white;
     float: center;
 }
 
