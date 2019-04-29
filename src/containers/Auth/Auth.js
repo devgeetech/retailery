@@ -321,7 +321,7 @@ class Auth extends Component {
             //     value={formElement.config.value}
             //     placeholder={formElement.config.elementConfig.placeholder}
             //     onChange={( event ) => this.inputChangedHandler( event, formElement.id, this.state.controls )}/>
-            <Input
+            <Input className={classes.Autho}
                 key={formElement.id}
                 elementType={formElement.config.elementType}
                 elementConfig={formElement.config.elementConfig}
@@ -372,7 +372,7 @@ class Auth extends Component {
                     // value={formElement.config.value}
                     // placeholder={formElement.config.elementConfig.placeholder}
                     // onChange={( event ) => this.inputChangedHandler( event, formElement.id, usedContr )}/>
-                <Input
+                <Input className={classes.Autho}
                     key={formElement.id}
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}

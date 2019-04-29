@@ -3,12 +3,13 @@
     height: 100%;
     /* border: 1.5px solid #eee;
     box-shadow: 0 2px 3px rgb(88, 87, 87); */
-    padding: 0;
-    margin: 10px auto;
-    background-color: white;
+    padding: 20%;
+    padding-bottom:100%;
+    /* margin: 10px auto; */
+    background: linear-gradient(#00ced1 10%,#00fa9a 80%);
     /* box-sizing: border-box; */
     display: inline-block;
-    margin-top: 100px;
+    margin-top: 56px;
     /*width: 80%;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
