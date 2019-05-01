@@ -7,6 +7,9 @@ import Spinner from '../UI/Spinner/Spinner'
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import Backdrop from '../UI/Backdrop/Backdrop'
 
 
 import firebase from 'firebase'
@@ -17,12 +20,14 @@ import axios from 'axios'
 const ManProd = (props) => {
 
     const [pComp,updComp]=useState((<Spinner/>))
+    const [loadComp, upLoadcomp]=useState(null)
     const [snComp, upSnk]=useState(null)
     //let usrLoc = null
     const userId = localStorage.getItem('userId');
     const compList = []
 
     const predictSales = (event, viewVal) => {
+
         console.log(viewVal)
         let headers = {
             'Content-Type': 'text/plain'
@@ -33,6 +38,7 @@ const ManProd = (props) => {
                 const resNo = res.data.y_pred.substring(1, strLen-1);
                 console.log(resNo)
                 alert("Predicted Sales : "+resNo)
+                upLoadcomp(false)
             })
     }
 
@@ -63,7 +69,10 @@ const ManProd = (props) => {
                                 <p>Rating: {(proData.ratingVals.ratingValue).toFixed(1)}</p>
                                 <p><strong>{proData.price}</strong></p>
                                 <Button 
-                                    onClick={event => predictSales(event, proData.views)}
+                                    onClick={event => {
+                                        upLoadcomp(true)
+                                        predictSales(event, proData.views)
+                                    }}
                                     className={classes.Button}>Predict Sales</Button>
                                 <p>Views: {proData.views}</p>
                             </div>
@@ -77,6 +86,7 @@ const ManProd = (props) => {
     return(
         <Auxil>
             <div className={classes.page}>
+               {loadComp? <Backdrop show={true} />:null} 
                <div className={classes.FeedSpecProdList}>
                     {pComp}
                 </div>

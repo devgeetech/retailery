@@ -7,3 +7,7 @@
     /* // box-sizing: border-box; */
     display: inline-block;
 }
+
+.mapPlace {
+    text-align: center;
+}

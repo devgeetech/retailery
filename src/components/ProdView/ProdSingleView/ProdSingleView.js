@@ -145,7 +145,7 @@ const ProdSingleView = (props) => {
                         destination: shopData.loc.lat+","+shopData.loc.lng
                     }
                     console.log(usrLat)
-                    const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak&origin="+srchParam.origin+"&destination="+srchParam.destination
+                    const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE&origin="+srchParam.origin+"&destination="+srchParam.destination
                     updCont(
                         <div className={classes.page}>
                             <p>Seller : <strong>{sellerName}</strong></p>

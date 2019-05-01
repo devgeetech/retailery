@@ -15,7 +15,10 @@ const GeoF = (props) => {
   const [activeMarker, upActivM] = useState({})
   const [selectedPlace, upSelectP] = useState({})
   const [usrLoc, upUsrLoc] = useState({usrLat : 9.318226,usrLng : 76.613996})
-  const [mapComp, upMap] = useState(null)
+  const [mapComp, upMap] = useState(<div className={classes.mapPlace}>
+                                      <p>Please Turn on Geolocation Services</p>
+                                      <p> to enable LIVE MAP</p>
+                                    </div>)
   let usL = {usrLat : 9.318226,usrLng : 76.613996}
 //   const [mrkrs, upMrkrs] = useState(null)
 
