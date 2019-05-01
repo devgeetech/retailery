@@ -7,6 +7,8 @@ import FeedProd from '../../feedProdList/feedProd/FeedProd'
 //import firebase from './node_modules/firebase'
 import Spinner from '../../UI/Spinner/Spinner'
 import firebase from 'firebase'
+import Button from '../../UI/Button/Button'
+import deleteIcon from '../../../assets/icons/deleteIcon.svg'
 
 
 
@@ -52,7 +54,12 @@ const WishL = (props) => {
                                         price={indProd.price}
                                         imageSrc={indProd.imageSrc}
                                         imgAlt={indProd.imgAlt}
-                                        styleClass={classes}/>
+                                        styleClass={classes}>   
+                                    </FeedProd>
+                                    <div>
+                                        <Button><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
+                                    </div>
+                                    
                                 </div>
                             )))
                         })          

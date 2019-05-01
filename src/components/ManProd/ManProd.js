@@ -21,6 +21,7 @@ const ManProd = (props) => {
 
     const [pComp,updComp]=useState((<Spinner/>))
     const [loadComp, upLoadcomp]=useState(null)
+    const [diagComp, upDiag]=useState(null)
     const [snComp, upSnk]=useState(null)
     //let usrLoc = null
     const userId = localStorage.getItem('userId');

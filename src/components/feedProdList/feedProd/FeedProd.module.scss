@@ -1,6 +1,6 @@
 // @import '../../WishList/WishL/WishL.module.scss';
 .feedProd {
-    width: 70%;
+    width: 90%;
     height: 100%;
     // border: 1.5px solid #eee;
     // box-shadow: 0 2px 3px rgb(88, 87, 87);
@@ -28,6 +28,7 @@
 
 .cont {
     color: #0d1e51;
+    // color: #FFEAD0;
     // font-size: 95%;
     width: 220px;
     // padding-right: 5px;
@@ -52,13 +53,15 @@
     height: 49%;
     width: 97.7%;
     color: #0d1e51;
+    // color: #FFEAD0;
     border: 4px solid white;
     //  text-align: left; 
     // float: left;
     margin: 0;
     // padding-top: 10px;
     font-size: 75%;
-    background-color: #dbffef;
+    background-color: #FFEAD0;
+    // background-color: #dbffef;
     // background-image: linear-gradient(to top,#808080 2%,#fff8dc 10%, white 100%);
     @media (min-width: 500px) {
         // float: center;
