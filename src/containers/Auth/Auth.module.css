@@ -6,7 +6,8 @@
     padding: 20%;
     padding-bottom:100%;
     /* margin: 10px auto; */
-    background: linear-gradient(#00ced1 10%,#00fa9a 80%);
+    z-index: 100;
+    background: url('../../assets/icons/bg.jpg');
     /* box-sizing: border-box; */
     display: inline-block;
     margin-top: 56px;

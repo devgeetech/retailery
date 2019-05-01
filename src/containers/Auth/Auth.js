@@ -16,7 +16,6 @@ import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index';
 import { FormControl } from '@material-ui/core';
 
-
 class Auth extends Component {
     state = {
         controls: {
