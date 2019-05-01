@@ -116,7 +116,11 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                         }
                     }     
                     setDoc.doc(response.data.localId).set(dataNew)
-                    Push.create("Welcome to ShoppingSpree");
+                    if (Notification.permission == 'granted') {
+                        navigator.serviceWorker.getRegistration().then(function(reg) {
+                          reg.showNotification('Welcome to ShoppingSpree!!');
+                        });
+                    }
                 }
                 
                 // console.log(response);
@@ -127,6 +131,15 @@ export const auth = (email, password, isSignup, isCust, userData) => {
                 localStorage.setItem('isCust', isCust);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
                 dispatch(checkAuthTimeout(response.data.expiresIn));
+                if (Notification.permission === 'granted') {
+                    let options = {
+                        body: "Check out our awesome products"
+                    }
+                    new Notification('Welcome to ShoppingSpree!',options)
+                    // navigator.serviceWorker.getRegistration().then(function(reg) {
+                    //   reg.showNotification('Welcome to ShoppingSpree!');
+                    // });
+                }
             })
             .catch(err => {
                 dispatch(authFail(err));

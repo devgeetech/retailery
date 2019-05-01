@@ -140,12 +140,15 @@ const ProdSingleView = (props) => {
                     const shopData = snapshot.data()
                     const sellerName = snapshot.data().name
                     const telPhone = "tel:"+shopData.phone
+                    
                     const srchParam = {
                         origin: usrLat+","+usrLng,
                         destination: shopData.loc.lat+","+shopData.loc.lng
                     }
-                    console.log(usrLat)
+
                     const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE&origin="+srchParam.origin+"&destination="+srchParam.destination
+                    console.log(usrLat)
+                    
                     updCont(
                         <div className={classes.page}>
                             <p>Seller : <strong>{sellerName}</strong></p>

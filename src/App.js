@@ -22,6 +22,12 @@ import Push from 'push.js'
 
 class App extends Component {
   componentDidMount() {
+    Notification.requestPermission(function(status) {
+      console.log('Notification permission status:', status);
+    });
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position)
+    })
     this.props.onTryAutoSignup();
     //this is to push notification
     // Push.create("welcome to shoppingspree");
