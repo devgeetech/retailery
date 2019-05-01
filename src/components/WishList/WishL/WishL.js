@@ -15,13 +15,12 @@ import deleteIcon from '../../../assets/icons/deleteIcon.svg'
 const WishL = (props) => {
     const [pComp,updComp]=useState((<Spinner/>))
     const [cmpList,upWComp]=useState([])
+    const [wcList, upWcList]=useState([])
         let compList = []
-        const indProdu = []
+        let indProdu = []
         const db = firebase.firestore();
 
         const showSpecProd = (proDet) =>{
-            console.log("clicked")
-            console.log(proDet)
             const queryPar = encodeURIComponent(proDet);
     
             props.history.push({
@@ -30,9 +29,30 @@ const WishL = (props) => {
             });
         }
 
+        const delProd = (event, prId) => {
+            // event.preventDefault();
+            //console.log(prId)
+            const srchRef = db.collection("customer").doc(props.userId).get()
+            .then(snapshot => {
+                let cpList = snapshot.data().wish
+                //console.log(cpList)
+                cpList.splice( cpList.indexOf(prId), 1 );
+                //console.log(cpList)
+                db.collection("customer").doc(props.userId).update({
+                    wish: cpList
+                })
+                props.history.push({
+                    pathname: "/wish"
+                });
+            })
+            
+        }
+
         useEffect(()=>{
             const srchRef = db.collection("customer").doc(props.userId)
-            srchRef.onSnapshot(snapshot => {
+            .onSnapshot(snapshot => {
+                updComp(<Spinner/>)
+                indProdu = []
                 compList = snapshot.data().wish
                 upWComp(compList)
 
@@ -47,20 +67,20 @@ const WishL = (props) => {
                             
                             indProdu.push(snapshot.data())
                             updComp(indProdu.map(indProd => (
-                                <div key={indProd.id} className={classes.FeedProd} onClick={event => showSpecProd(indProd.id)}>
+                                <Auxil>
+                                    <div key={indProd.id} className={classes.FeedProd} onClick={event => showSpecProd(indProd.id)}>
                                     <FeedProd 
                                         name={indProd.name}
                                         content={indProd.content}
                                         price={indProd.price}
                                         imageSrc={indProd.imageSrc}
                                         imgAlt={indProd.imgAlt}
-                                        styleClass={classes}>   
-                                    </FeedProd>
-                                    <div>
-                                        <Button><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
+                                        styleClass={classes} />   
                                     </div>
-                                    
-                                </div>
+                                    <div className={classes.deButton}>
+                                        <Button clicked={event => delProd(event, indProd.id)}><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
+                                    </div>
+                                </Auxil>
                             )))
                         })          
                     })

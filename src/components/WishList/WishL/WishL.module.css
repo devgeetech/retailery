@@ -1,5 +1,11 @@
 .FeedProd {
     color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.deButton {
+    z-index: 5;
 }
 
 .FeedProdImg {
