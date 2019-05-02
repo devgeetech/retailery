@@ -69,13 +69,27 @@ const ManProd = (props) => {
                                 <h2><strong>{proData.brand}{" "}{proData.name}</strong></h2>
                                 <p>Rating: {(proData.ratingVals.ratingValue).toFixed(1)}</p>
                                 <p><strong>{proData.price}</strong></p>
-                                <Button 
+                                <p>Views: {proData.views}</p>
+                                </div>
+                                <div className={classes.predict}>
+                                <div className={classes.ostock}>
+                                <Button
+                                    onClick={event => {
+                                        upLoadcomp(true)
+                                        predictSales(event, proData.views)
+                                    }}
+                                    className={classes.Button}>Out Of Stock</Button>
+                                    </div>
+                                    <div className={classes.sales}>
+                                <Button
                                     onClick={event => {
                                         upLoadcomp(true)
                                         predictSales(event, proData.views)
                                     }}
                                     className={classes.Button}>Predict Sales</Button>
-                                <p>Views: {proData.views}</p>
+                                   </div> 
+                                {/* <p>Views: {proData.views}</p> */}
+                          
                             </div>
                         </div>                    
                     </div>
