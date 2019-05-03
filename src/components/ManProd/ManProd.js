@@ -25,7 +25,7 @@ const ManProd = (props) => {
     const [snComp, upSnk]=useState(null)
     //let usrLoc = null
     const userId = localStorage.getItem('userId');
-    const compList = []
+    let compList = []
 
     const predictSales = (event, viewVal) => {
 
@@ -43,15 +43,29 @@ const ManProd = (props) => {
             })
     }
 
+    const togStock = (event, prId, inSt) => {
+        const srchRef = firebase.firestore().collection("products").doc(prId) 
+        const stk = inSt===1? 0:1
+        srchRef.update({
+            isInStock: stk
+        })
+        upLoadcomp(false)
+    }
+
     useEffect(()=>{
         // navigator.geolocation.getCurrentPosition(position => {
         //     console.log(position)
         //     usrLoc={lat:position.coords.latitude, lng:position.coords.longitude}
         // })
+        
+        
+
         const db = firebase.firestore();
         const srchRef = db.collection("products");
         const srchRes = srchRef.where("sellerId", "==", userId)
         srchRes.onSnapshot(function(snapshot) {
+            updComp(<Spinner/>)
+            compList = []
             snapshot.forEach(function(childSnapshot) {
                 var childData = childSnapshot.data();
                 compList.push(childData)
@@ -72,24 +86,23 @@ const ManProd = (props) => {
                                 <p>Views: {proData.views}</p>
                                 </div>
                                 <div className={classes.predict}>
-                                <div className={classes.ostock}>
-                                <Button
-                                    onClick={event => {
-                                        upLoadcomp(true)
-                                        predictSales(event, proData.views)
-                                    }}
-                                    className={classes.Button}>Out Of Stock</Button>
+                                    <div className={classes.ostock}>
+                                        <Button
+                                            onClick={event => {
+                                                upLoadcomp(true)
+                                                togStock(event, proData.id,proData.isInStock)
+                                            }}
+                                            className={classes.Button}>{proData.isInStock===1? "Out of stock": "In stock"}</Button>
                                     </div>
                                     <div className={classes.sales}>
-                                <Button
-                                    onClick={event => {
-                                        upLoadcomp(true)
-                                        predictSales(event, proData.views)
-                                    }}
-                                    className={classes.Button}>Predict Sales</Button>
-                                   </div> 
+                                        <Button
+                                            onClick={event => {
+                                                upLoadcomp(true)
+                                                predictSales(event, proData.views)
+                                            }}
+                                            className={classes.Button}>Predict Sales</Button>
+                                    </div> 
                                 {/* <p>Views: {proData.views}</p> */}
-                          
                             </div>
                         </div>                    
                     </div>

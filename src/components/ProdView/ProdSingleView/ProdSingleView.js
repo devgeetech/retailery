@@ -124,6 +124,7 @@ const ProdSingleView = (props) => {
                 }
                      
             }
+            console.log(proData.isInStock)
             updProd(<div className={classes.ProdSingleView}>
                         <img src={proData.imageSrc} alt={proData.imgAlt} className={classes.img}/>
                         <div className={classes.content}>
@@ -131,6 +132,7 @@ const ProdSingleView = (props) => {
                             <p>Rating: {(proData.ratingVals.ratingValue).toFixed(1)}</p>
                             <p className={classes.cont}><i>{proData.content}</i></p>
                             <p><strong>{proData.price}</strong></p>
+                            <p>{proData.isInStock===0? "Out of stock": "In stock"}</p>
                         </div>
                         {rating}
 

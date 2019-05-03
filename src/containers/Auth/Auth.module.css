@@ -1,13 +1,20 @@
 .Auth {
     width: 60%;
     height: 100%;
+    color: white;
     /* border: 1.5px solid #eee;
     box-shadow: 0 2px 3px rgb(88, 87, 87); */
     padding: 20%;
-    padding-bottom:100%;
+    padding-bottom: 100%;
     /* margin: 10px auto; */
     z-index: 100;
-    background: url('../../assets/icons/bg.jpg');
+    background: linear-gradient(#00ced1 10%, #00fa9a 80%);
+    /* background: url('../../assets/Images/loginImage.png');
+    background-position: center;
+    /* Center the image */
+    /* background-repeat: no-repeat; */
+    /* Do not repeat the image */
+    /* background-size: cover;  */
     /* box-sizing: border-box; */
     display: inline-block;
     margin-top: 56px;
@@ -17,6 +24,10 @@
     border: 1px solid #eee;
     padding: 10px;
     box-sizing: border-box; */
+}
+
+.group {
+    color: white;
 }
 
 .Inp {
@@ -30,6 +41,8 @@
         width: 500px;
     }
 } */
+
+
 /* .Switch:active {
     animation:fade 200ms 3s 8 ease-out;
 }

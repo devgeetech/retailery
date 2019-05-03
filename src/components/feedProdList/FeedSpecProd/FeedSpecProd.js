@@ -97,6 +97,7 @@ const FeedSpecProd = (props) => {
                                 price={indProd.price}
                                 imageSrc={indProd.imageSrc}
                                 imgAlt={indProd.imgAlt}
+                                isInStock={indProd.isInStock}
                                 ratVal={indProd.ratingVals.ratingValue.toFixed(1)}
                                 />
                         </div>
