@@ -337,7 +337,6 @@ class Auth extends Component {
                     <RadioGroup
                         aria-label="Type"
                         name="account_type"
-                        className={classes.group}
                         value={this.state.radVal}
                         onChange={(event, value) => this.switchSignUpHandler(event, value)}>
                             <FormControlLabel value="customer" control={<Radio />} label="Customer" />
@@ -393,7 +392,7 @@ class Auth extends Component {
 
         if (this.props.error) {
             errorMessage = (
-                <p>{this.props.error.message}</p>
+                <p>INVALID</p>
             );
         }
 
