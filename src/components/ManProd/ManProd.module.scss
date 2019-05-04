@@ -35,7 +35,12 @@
     // background: lightgrey
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 5%;
+    // margin-bottom: 5%;
+}
+
+.Delete {
+    margin-bottom:5%;
+    margin-top:2%;
 }
 
 .ostock {
@@ -50,6 +55,10 @@
     // border-top-right-radius: 4px;
 }
 
+.Home {
+    height:8%;
+    width: 8%;
+}
 .sales {
     background: lightgrey;
     height: 90%;

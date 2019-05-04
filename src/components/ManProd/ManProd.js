@@ -10,6 +10,8 @@ import SnackbarContent from '@material-ui/core/SnackbarContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import Backdrop from '../UI/Backdrop/Backdrop'
+import deleteIcon from '../../assets/icons/deleteIcon.svg'
+
 
 
 import firebase from 'firebase'
@@ -58,7 +60,7 @@ const ManProd = (props) => {
         //     usrLoc={lat:position.coords.latitude, lng:position.coords.longitude}
         // })
         
-        
+       
 
         const db = firebase.firestore();
         const srchRef = db.collection("products");
@@ -102,8 +104,14 @@ const ManProd = (props) => {
                                             }}
                                             className={classes.Button}>Predict Sales</Button>
                                     </div> 
+                                    </div>
+                                    <div className={classes.Delete}>
+                                    <Button clicked={event => delProd(event, proData.id)}><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
+                                    </div>   
+                                    
+                                    
                                 {/* <p>Views: {proData.views}</p> */}
-                            </div>
+                            
                         </div>                    
                     </div>
                 ))) 
