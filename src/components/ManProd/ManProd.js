@@ -54,6 +54,18 @@ const ManProd = (props) => {
         upLoadcomp(false)
     }
 
+    const delProd = (event, prId) => {
+        // event.preventDefault();
+        console.log(prId)
+        const db = firebase.firestore();
+        let deleteDoc = db.collection('products').doc(prId).delete()
+            .then(event => {
+                props.history.push({
+                    pathname: "/ManProd"
+                });
+            })
+    }
+
     useEffect(()=>{
         // navigator.geolocation.getCurrentPosition(position => {
         //     console.log(position)
@@ -86,8 +98,8 @@ const ManProd = (props) => {
                                 <p>Rating: {(proData.ratingVals.ratingValue).toFixed(1)}</p>
                                 <p><strong>{proData.price}</strong></p>
                                 <p>Views: {proData.views}</p>
-                                </div>
-                                <div className={classes.predict}>
+                            </div>
+                            <div className={classes.predict}>
                                     <div className={classes.ostock}>
                                         <Button
                                             onClick={event => {
@@ -104,10 +116,10 @@ const ManProd = (props) => {
                                             }}
                                             className={classes.Button}>Predict Sales</Button>
                                     </div> 
-                                    </div>
-                                    {/* <div className={classes.Delete}>
-                                    <Button clicked={event => delProd(event, proData.id)}><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
-                                    </div>     */}
+                            </div>
+                            <div className={classes.Delete}>
+                                <Button onClick={event => delProd(event, proData.id)}><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
+                            </div>    
                                 {/* <p>Views: {proData.views}</p> */}
                             
                         </div>                    
