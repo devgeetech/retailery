@@ -15,6 +15,7 @@ const ProdSingleView = (props) => {
     const [usrId, updId] = useState(props.userId)
     const [proDat, upDat] = useState(null)
     const [ratVal, upRatVal] = useState(0)
+    // const [ratBoot, upRatBoot] = useState(0)
     let usrLat = 9.318226
     let usrLng = 76.613996
     let oldWishList = null
@@ -36,18 +37,12 @@ const ProdSingleView = (props) => {
         //console.log(starVal)
     }
 
-    const ratSubmit = () => {
+    const ratSubmit = (event) => {
         console.log("clicked")
         const ratMain = db.collection('products')
         const ratSet = db.collection('products').doc(props.prodId)
-        
-        // const ratChk = (ratMain.where("id","==",props.prodId)
-        //                 .where("custRatings", "array-contains", props.userId).get()
-        //                     .then(snapshot => {
-        //                             const newDat = snapshot.data()
-        //                             return newDat
-        //                         })) == null ? 1 : 0
-        // if(!ratChk){
+        // upRatBoot(ratBoot+1)
+        // console.log(ratBoot)
             const ratRef = db.collection('products').doc(props.prodId).get()
             .then(snpshot => {
                 const snapshot = snpshot.data()
@@ -58,8 +53,17 @@ const ProdSingleView = (props) => {
                     ratingVals : {
                         noOfRating : (snapshot.ratingVals.noOfRating + 1),
                         ratingValue : ratVals
-                }
-            })
+                    }
+                })
+                
+                // const queryPar = encodeURIComponent(props.prodId);
+                // console.log(props.prodId)
+                window.location.reload();
+                // console.log("pushing part")
+                // props.history.push({
+                // pathname: "/ProdView",
+                // search: "?" + queryPar
+                // });
             })
         //}
     }
@@ -104,8 +108,15 @@ const ProdSingleView = (props) => {
             db.collection("products").doc(props.prodId).update({views:viewCount});
             upDat(proData)
             if(props.userId){
-                rat = ratSrch.where("id","==",props.prodId).where("custRatings", "array-contains", props.userId) 
-                if(rat!==null){
+                // rat = ratSrch.where("id","==",props.prodId).where("custRatings", "array-contains", props.userId)
+                // rat.onSnapshot(snsh => {
+                //         const ratsnp = snsh.data()
+                //         console.log(ratsnp)
+                //     }) 
+
+                const bootChk = proData.custRatings.includes(props.userId)
+
+                if(!bootChk){
                     rating=(
                             <div>
                                 <p>Rate this Product :</p>
@@ -117,7 +128,7 @@ const ProdSingleView = (props) => {
                                 name='ProdRating'
                                 starDimension="20px"
                                 starSpacing="7px"/>
-                                <Button onClick={ratSubmit}>Submit</Button>
+                                <Button onClick={event => ratSubmit(event)}>Submit</Button>
                             </div>)
                 }else{
                     rating = null

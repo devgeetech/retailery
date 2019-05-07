@@ -19,8 +19,8 @@ const navigationItems = (props) =>{
     // else
     //     isShop=true
 
-    console.log(isCust)
-    console.log(!isCust)
+    // console.log(isCust)
+    // console.log(!isCust)
     return(
         <ul className={classes.NavigationItems}>
             <NavigationItem link="/" exact clicked={props.clicked}>

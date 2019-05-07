@@ -56,7 +56,6 @@ const ManProd = (props) => {
 
     const delProd = (event, prId) => {
         // event.preventDefault();
-        console.log(prId)
         const db = firebase.firestore();
         let deleteDoc = db.collection('products').doc(prId).delete()
             .then(event => {
