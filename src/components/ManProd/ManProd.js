@@ -105,11 +105,9 @@ const ManProd = (props) => {
                                             className={classes.Button}>Predict Sales</Button>
                                     </div> 
                                     </div>
-                                    <div className={classes.Delete}>
+                                    {/* <div className={classes.Delete}>
                                     <Button clicked={event => delProd(event, proData.id)}><img src={deleteIcon} className={classes.Home} alt= "alt" /></Button>
-                                    </div>   
-                                    
-                                    
+                                    </div>     */}
                                 {/* <p>Views: {proData.views}</p> */}
                             
                         </div>                    
