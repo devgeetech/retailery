@@ -17,7 +17,7 @@ const FeedProd = (props) => {
                     <p>{props.ratVal}<img src={image} className={classes.rating} alt="rating" /></p>
                 </div>
                 <p className={classes.contents}><i>{props.content}</i></p>
-                <h3>{props.isInStock===0? "Out of stock": null}</h3>
+                <h3>{props.isInStock===0? "Out of Stock": props.isInStock===1? "Few Left" : null}</h3>
                 {/* <a href="tel:+919645171179">Call</a> */}
             </div>
         </div>

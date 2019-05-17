@@ -46,10 +46,13 @@ const ManProd = (props) => {
     }
 
     const togStock = (event, prId, inSt) => {
+        let inewSt=inSt+1
+        console.log(inewSt)
+        inewSt=inewSt%3;
+        console.log(inewSt)
         const srchRef = firebase.firestore().collection("products").doc(prId) 
-        const stk = inSt===1? 0:1
         srchRef.update({
-            isInStock: stk
+            isInStock: inewSt
         })
         upLoadcomp(false)
     }
@@ -105,7 +108,7 @@ const ManProd = (props) => {
                                                 upLoadcomp(true)
                                                 togStock(event, proData.id,proData.isInStock)
                                             }}
-                                            className={classes.Button}>{proData.isInStock===1? "Out of stock": "In stock"}</Button>
+                                            className={classes.Button}>{proData.isInStock===2? "Out of stock" : proData.isInStock===0? "Few Left" : "In stock" }</Button>
                                     </div>
                                     <div className={classes.sales}>
                                         <Button
