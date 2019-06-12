@@ -37,7 +37,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: 'Password (Min 6 char)'
                 },
                 value: '',
                 validation: {
@@ -66,7 +66,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'PIN Code'
+                    placeholder: 'PIN Code (Min. 6 char)'
                 },
                 value: '',
                 validation: {
@@ -94,7 +94,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: 'Password (Min. 6 char)'
                 },
                 value: '',
                 validation: {
@@ -151,7 +151,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'PIN Code'
+                    placeholder: 'PIN Code (Min. 6 char)'
                 },
                 value: '',
                 validation: {
@@ -193,7 +193,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: 'Password (Min. 6 char)'
                 },
                 value: '',
                 validation: {
