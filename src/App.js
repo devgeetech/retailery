@@ -7,11 +7,9 @@ import "./App.css";
 import FeedProdList from "./components/feedProdList/FeedProdList.js";
 import WishList from "./components/WishList/WishList";
 import FeedSpecProd from "./components/feedProdList/FeedSpecProd/FeedSpecProd";
-import Direction from "./components/Map/Direction";
 import ProdView from "./components/ProdView/ProdView";
 import Layout from "./hoc/Layout/Layout";
-import Geo from "./components/Map/Geo";
-import Directions from "./components/Map/Direction";
+// import Directions from "./components/Map/Direction";
 import Auth from "./containers/Auth/Auth";
 import AddProd from "./components/AddProd/AddProd"
 import ManProd from './components/ManProd/ManProd'
@@ -40,10 +38,9 @@ class App extends Component {
       <Switch>
         <Route path="/auth" component={Auth} />
         <Route path="/" exact component={FeedProdList} />
-        <Route path="/geo" exact component={Geo} />
         <Route path="/FeedM" exact component={FeedSpecProd} />
         <Route path="/ProdView" exact component={ProdView} />
-        <Route path="/MapView" exact component={Directions} />
+        {/* <Route path="/MapView" exact component={Directions} /> */}
         <Redirect to="/" />
       </Switch>
     );
@@ -56,11 +53,10 @@ class App extends Component {
           <Route path="/FeedM" exact component={FeedSpecProd} />
           <Route path="/AddProd" component={AddProd} />
           <Route path="/ProdView" exact component={ProdView} />
-          <Route path="/MapView" exact component={Directions} />
+          {/* <Route path="/MapView" exact component={Directions} /> */}
           <Route path="/" exact component={FeedProdList} />
-          <Route path="/geo" exact component={Geo} />
           <Route path="/ManProd" exact component={ManProd} />
-          <Route path="/direction" exact component={Directions} />
+          {/* <Route path="/direction" exact component={Directions} /> */}
           <Redirect to="/" />
         </Switch>
       );

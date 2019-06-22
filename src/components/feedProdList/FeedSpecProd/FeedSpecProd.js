@@ -5,7 +5,6 @@ import FeedProd from '../feedProd/FeedProd'
 import classes from './FeedSpecProd.module.css'
 //import firebase from './node_modules/firebase'
 import Spinner from '../../UI/Spinner/Spinner'
-import Geo from '../../Map/Geo'
 import GeoF from '../../Map/GeoF'
 import firebase from 'firebase'
 //import console = require('console');

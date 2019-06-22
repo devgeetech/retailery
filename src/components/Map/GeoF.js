@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import Directionbutton from "../../components/UI/Button/Button";
 import Auxil from "../../hoc/Auxil/Auxil";
 import homeIcon from '../../assets/icons/homeLoc3.png'
 import Layout from "../../hoc/Layout/Layout";
-import CurrentLocation from "./Map";
 import classes from "./Geo.module.css";
+
+import { mapKey } from '../../keys/keyStore'
 //import MapViewDirections from "react-native-maps-directions";
 
 const GeoF = (props) => {
@@ -145,5 +145,5 @@ const GeoF = (props) => {
 
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE"
+  apiKey: mapKey
 })(GeoF);

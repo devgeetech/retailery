@@ -8,20 +8,12 @@ import authReducer from './store/reducers/auth';
 
 import "./index.css";
 import App from "./App";
-import Geo from "./components/Map/Geo";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import * as firebase from "firebase";
-import FeedProdList from "./components/feedProdList/FeedProdList";
 
-var config = {
-  apiKey: "AIzaSyDrN8PymBoXSe8fYVZ0BvSG9rLaP4o8kak",
-  authDomain: "shoppingspree-6e902.firebaseapp.com",
-  databaseURL: "https://shoppingspree-6e902.firebaseio.com",
-  storageBucket: "shoppingspree-6e902.appspot.com",
-  projectId: "shoppingspree-6e902",
-  messagingSenderId: "30003369612"
-};
+import { config } from './keys/keyStore'
+
 firebase.initializeApp(config);
 
 // const messaging = firebase.messaging();
