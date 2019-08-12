@@ -23,7 +23,7 @@ const sideDrawer = ( props ) => {
                     <Logo />
                 </div> */}
                 <nav>
-                    <h1 className={classes.headText}>ShoppingSpree</h1>
+                    <h1 className={classes.headText}>Retailery</h1>
                     <NavigationItems 
                         clicked={props.closed} 
                         isAuthenticated={props.isAuth} 

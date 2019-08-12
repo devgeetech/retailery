@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-
 import logo from "./logo.svg";
 import "./App.css";
 import FeedProdList from "./components/feedProdList/FeedProdList.js";
