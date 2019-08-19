@@ -25,20 +25,10 @@ const ProdSingleView = (props) => {
     }
 
     const ratSubmit = (event) => {
-        console.log(props.userId)
-        console.log(props.prodId)
-        console.log(starVal)
-        // const ratgq = {
-        //     query: `
-        //         mutation: {
-        //             updRating(ratingDat: {usId: "${props.userId}",prId: "${props.prodId}", starVal: "${starVal}"})
-        //         }
-        //     `
-        // }
         const ratgq = {
             query: `
-                mutation: {
-                    updRating(ratingDat: {usId: "1EiNJXZrM2e0zznFRKzqJccCMH82",prId: "1Fa3b8MJkGVZ0KkwhE2Q", starVal: 3})
+                mutation {
+                    updRating(ratingDat: {usId: "${props.userId}",prId: "${props.prodId}", starVal: ${starVal}})
                 }
             `
         }
@@ -50,50 +40,27 @@ const ProdSingleView = (props) => {
             body: JSON.stringify(ratgq)
         })
         .then(res => {
-            console.log(res)
             return res.json();
         })
-        // const ratMain = db.collection('products')
-        // const ratSet = db.collection('products').doc(props.prodId)
-        //     const ratRef = db.collection('products').doc(props.prodId).get()
-        //     .then(snpshot => {
-        //         const snapshot = snpshot.data()
-        //         snapshot.custRatings.push(props.userId)
-        //         let ratVals = ((((snapshot.ratingVals.noOfRating)*(snapshot.ratingVals.ratingValue)) + starVal)/(snapshot.ratingVals.noOfRating + 1))
-        //         const setRat = ratSet.update({
-        //             custRatings : snapshot.custRatings,
-        //             ratingVals : {
-        //                 noOfRating : (snapshot.ratingVals.noOfRating + 1),
-        //                 ratingValue : ratVals
-        //             }
-        //         })
-        //         window.location.reload();
-        //     })
+        window.location.reload();
     }
 
     const addWishList = () => {
-        console.log("Added to wishlist")
-        // let fullDat = null
-        // let boot = 0;
-        // if(props.userId!==null){
-        //     const addWish = db.collection("customer")
-        //     const addWshRef = db.collection("customer").doc(props.userId).get()
-        //     .then(snapshot => {
-        //         fullDat = snapshot.data()
-        //         const oldWishList = fullDat.wish
-        //         oldWishList.map(wishIt => {
-        //             if (wishIt === props.prodId){
-        //                 boot = 1
-        //             }
-        //         })
-        //         if(!boot){
-        //             oldWishList.push(props.prodId)
-        //             addWish.doc(props.userId).update({
-        //                 wish: oldWishList
-        //             })
-        //         }
-        //     })
-        // }
+        const wisgq = {
+            query: `
+                mutation {
+                    addWish(addWishDat: {usId: "${props.userId}",prId: "${props.prodId}"})
+                }
+            `
+        }
+        fetch('http://localhost:8080/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(wisgq)
+        })
+        alert("Added to wishlist")
     }
 
     useEffect(()=>{
@@ -201,7 +168,7 @@ const ProdSingleView = (props) => {
                     destination: shopData.loc.lat+","+shopData.loc.lng
                 }
 
-                const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE&origin="+srchParam.origin+"&destination="+srchParam.destination
+                const url = "https://www.google.com/maps/embed/v1/directions?key=KEY&origin="+srchParam.origin+"&destination="+srchParam.destination
                 //console.log(usrLat)
                 
                 updCont(
@@ -237,98 +204,6 @@ const ProdSingleView = (props) => {
             })
         })
 
-        // const srchRef = db.collection("products").doc(props.prodId).get()
-        // .then(snapshot => {
-        //     const proData = snapshot.data()
-        //     viewCount = proData.views + 1
-        //     db.collection("products").doc(props.prodId).update({views:viewCount});
-        //     upDat(proData)
-        //     if(props.userId){
-        //         // rat = ratSrch.where("id","==",props.prodId).where("custRatings", "array-contains", props.userId)
-        //         // rat.onSnapshot(snsh => {
-        //         //         const ratsnp = snsh.data()
-        //         //         console.log(ratsnp)
-        //         //     }) 
-
-        //         const bootChk = proData.custRatings.includes(props.userId)
-
-        //         if(!bootChk){
-        //             rating=(
-        //                     <div>
-        //                         <p>Rate this Product :</p>
-        //                         <StarRatings
-        //                         rating={ratVal}
-        //                         starRatedColor="blue"
-        //                         changeRating={event => changeRating(event)}
-        //                         numberOfStars={5}
-        //                         name='ProdRating'
-        //                         starDimension="20px"
-        //                         starSpacing="7px"/>
-        //                         <Button onClick={event => ratSubmit(event)}>Submit</Button>
-        //                     </div>)
-        //         }else{
-        //             rating = null
-        //         }
-                     
-        //     }
-        //     updProd(<div className={classes.ProdSingleView}>
-        //                 <img src={proData.imageSrc} alt={proData.imgAlt} className={classes.img}/>
-        //                 <div className={classes.content}>
-        //                     <h2><strong>{proData.brand}{" "}{proData.name}</strong></h2>
-        //                     <p>Rating: {(proData.ratingVals.ratingValue).toFixed(1)}</p>
-        //                     <p className={classes.cont}><i>{proData.content}</i></p>
-        //                     <p><strong>{proData.price}</strong></p>
-        //                     <p>{proData.isInStock===0? "Out of stock": "In stock"}</p>
-        //                 </div>
-        //                 {rating}
-
-        //             </div>)
-        //     const shopRef = db.collection("shop").doc(proData.sellerId).get()
-        //         .then(snapshot => {
-        //             const shopData = snapshot.data()
-        //             const sellerName = snapshot.data().name
-        //             const telPhone = "tel:"+shopData.phone
-                    
-        //             const srchParam = {
-        //                 origin: usrLat+","+usrLng,
-        //                 destination: shopData.loc.lat+","+shopData.loc.lng
-        //             }
-
-        //             const url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBSS-C2AaaEAxXFJXGvwb7xL9MFcjuButE&origin="+srchParam.origin+"&destination="+srchParam.destination
-        //             console.log(usrLat)
-                    
-        //             updCont(
-        //                 <div className={classes.page}>
-        //                     <p>Seller : <strong>{sellerName}</strong></p>
-        //                     <div className={classes.navIcons}>
-        //                     <div className={classes.wish}>
-        //                         <Fab variant="extended" aria-label="Delete" className={classes.fab} >
-        //                             <img src={heartIcon} alt="phoneIcon" className={classes.phoneIcon} onClick={addWishList}/>
-        //                         </Fab>
-        //                         </div>
-        //                         <div className={classes.wish}>
-        //                         <a href={telPhone}>
-        //                         <Fab variant="extended" aria-label="Delete" className={classes.fab}>
-        //                                 <img src={phone} alt="phoneIcon" className={classes.phoneIcon}/>
-        //                             </Fab>     
-        //                         </a>
-        //                         </div>
-                                
-        //                         <div className={classes.wish}>
-        //                         <a href = {url} target="_blank" >
-                              
-        //                             <Fab variant="extended" aria-label="Delete" className={classes.fab}>
-        //                                 <img src={mapIcon} alt="phoneIcon" className={classes.phoneIcon}/>
-        //                             </Fab>
-                                    
-        //                         </a>
-        //                        </div>
-        //                     </div>
-        //                 </div>
-        //             )
-        //         })
-        // })
-        
     },[])
 
 
