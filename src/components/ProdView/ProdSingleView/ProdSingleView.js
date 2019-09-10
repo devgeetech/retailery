@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from "react-router";
+
+import { apiLink } from '../../../keys/keyStore'
 import classes from './ProdSingleView.module.scss'
 import firebase from 'firebase'
 import StarRatings from 'react-star-ratings';
@@ -32,7 +34,7 @@ const ProdSingleView = (props) => {
                 }
             `
         }
-        fetch('http://localhost:8080/graphql', {
+        fetch(apiLink, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +55,7 @@ const ProdSingleView = (props) => {
                 }
             `
         }
-        fetch('http://localhost:8080/graphql', {
+        fetch(apiLink, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -88,7 +90,7 @@ const ProdSingleView = (props) => {
                 }
             `
         }
-        fetch('http://localhost:8080/graphql', {
+        fetch(apiLink, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -149,7 +151,7 @@ const ProdSingleView = (props) => {
                 `
             }
 
-            fetch('http://localhost:8080/graphql', {
+            fetch(apiLink, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
