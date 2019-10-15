@@ -152,11 +152,11 @@ const ProdSingleView = (props) => {
             }
 
             fetch(apiLink, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(shopQuery)
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(shopQuery)
             })
             .then(res => {
                 return res.json();

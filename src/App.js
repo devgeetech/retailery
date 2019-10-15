@@ -89,18 +89,4 @@ export default withRouter(
   )(App)
 );
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <Layout>
-//           <Route path="/" exact component={FeedProdList} />
-//           <Route path="/geo" exact component={Geo} />
-//           <Route path="/FeedM" exact component={FeedSpecProd} />
-//         </Layout>
-//       </div>
-//     );
-//   }
-// }
 
-// export default App;
