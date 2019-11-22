@@ -1,3 +1,13 @@
 node_modules
 src/keys
 .env
+
+#firebase
+.firebasesrc
+database.rules.json
+firebase-messaging-sw.json
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
+

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import firebase from 'firebase'
-import Push from 'push.js'
+// import Push from 'push.js'
 
 import * as actionTypes from './actionTypes';
 
@@ -52,9 +52,9 @@ export const auth = (email, password, isSignup, isCust, userData) => {
             returnSecureToken: true
         };
         // console.log(isSignup)
-        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
+        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key='+process.env.REACT_APP_FIREBASE_API_KEY;
         if (!isSignup) {
-            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAu0pReHYzKAKWwFuepIHf8_1xwbBvweuM';
+            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key='+process.env.REACT_APP_FIREBASE_API_KEY;
         }
         axios.post(url, authData)
             .then(response => {

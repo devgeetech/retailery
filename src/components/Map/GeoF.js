@@ -145,5 +145,5 @@ const GeoF = (props) => {
 
 
 export default GoogleApiWrapper({
-  apiKey: mapKey
+  apiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY
 })(GeoF);

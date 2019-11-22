@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from "react-router";
 
+
+
 import { apiLink } from '../../../keys/keyStore'
 import classes from './ProdSingleView.module.scss'
 import firebase from 'firebase'
@@ -22,6 +24,8 @@ const ProdSingleView = (props) => {
     let rating = null 
     let starVal = 0
 
+
+    console.log(apiLink)
     const changeRating = (event) =>{
         starVal = event
     }
@@ -169,8 +173,9 @@ const ProdSingleView = (props) => {
                     origin: usrLat+","+usrLng,
                     destination: shopData.loc.lat+","+shopData.loc.lng
                 }
-
-                const url = "https://www.google.com/maps/embed/v1/directions?key=KEY&origin="+srchParam.origin+"&destination="+srchParam.destination
+                
+                const url = "https://www.google.com/maps/dir/?api=1&parameters&origin="+srchParam.origin+"&destination="+srchParam.destination
+                //const url = "https://www.google.com/maps/embed/v1/directions?key="+mapKey+"&origin="+srchParam.origin+"&destination="+srchParam.destination
                 //console.log(usrLat)
                 
                 updCont(
@@ -191,7 +196,7 @@ const ProdSingleView = (props) => {
                             </div>
                             
                             <div className={classes.wish}>
-                            <a href = {url} target="_blank" >
+                            <a href = {url} rel="noopener noreferrer" target="_blank" >
                             
                                 <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                                     <img src={mapIcon} alt="phoneIcon" className={classes.phoneIcon}/>

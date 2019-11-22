@@ -54,32 +54,7 @@ const FeedProdList = (props) => {
                 )))
             }
             
-        })
-
-        // firebase.database().ref('Products/').once('value').then(
-        //     function(snapshot) {
-        //         const v=snapshot.val()
-    
-        //         for(let indProd in v){
-        //             fetchedProd.push({
-        //                 ...v[indProd],
-        //                 id: indProd
-        //             })
-        //         }
-        //         prodUpdt(fetchedProd)
-        //         updComp(prodList.map(indProd => (
-        //             <div key={indProd.id}>
-        //             <FeedProd 
-        //                 name={indProd.name}
-        //                 content={indProd.content}
-        //                 price={indProd.price}
-        //                 imageSrc={indProd.imageSrc}
-        //                 imgAlt={indProd.imgAlt}
-        //                 />
-        //             </div>
-        //         )))
-        //     }
-        // )     
+        })  
     },[])
 
     return(

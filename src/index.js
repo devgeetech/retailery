@@ -12,7 +12,16 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import * as firebase from "firebase";
 
-import { config } from './keys/keyStore'
+// import { config } from './keys/keyStore'
+
+const config = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: "retailery.firebaseapp.com",
+    databaseURL: "https://retailery.firebaseio.com/",
+    storageBucket: "gs://retailery.appspot.com",
+    projectId: "retailery",
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_KEY
+}
 
 firebase.initializeApp(config);
 

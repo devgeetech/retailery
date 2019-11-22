@@ -33,18 +33,38 @@ const WishL = (props) => {
         const delProd = (event, prId) => {
             // event.preventDefault();
             //console.log(prId)
-            const srchRef = db.collection("customer").doc(props.userId).get()
-            .then(snapshot => {
-                let cpList = snapshot.data().wish
-                //console.log(cpList)
-                cpList.splice( cpList.indexOf(prId), 1 );
-                //console.log(cpList)
-                db.collection("customer").doc(props.userId).update({
-                    wish: cpList
-                })
-                props.history.push({
-                    pathname: "/wish"
-                });
+            // const srchRef = db.collection("customer").doc(props.userId).get()
+            // .then(snapshot => {
+            //     let cpList = snapshot.data().wish
+            //     //console.log(cpList)
+            //     cpList.splice( cpList.indexOf(prId), 1 );
+            //     //console.log(cpList)
+            //     db.collection("customer").doc(props.userId).update({
+            //         wish: cpList
+            //     })
+            //     props.history.push({
+            //         pathname: "/wish"
+            //     });
+            // })
+
+            const wisgq = {
+                query: `
+                    mutation {
+                        delWish(delWishDat: {usId: "${props.userId}",prId: "${prId}"})
+                    }
+                `
+            }
+            fetch(apiLink, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(wisgq)
+            }).then(res => {
+                return res.json();
+            })
+            .then(resData => {
+                console.log(resData)
             })
             
         }
